@@ -1,0 +1,448 @@
+
+<head>
+
+  <!--
+  /**
+   * @license
+   * MyFonts Webfont Build ID 3293297, 2016-10-08T14:32:03-0400
+   * 
+   * The fonts listed in this notice are subject to the End User License
+   * Agreement(s) entered into by the website owner. All other parties are 
+   * explicitly restricted from using the Licensed Webfonts(s).
+   * 
+   * You may obtain a valid license at the URLs below.
+   * 
+   * Webfont: DINNextLTPro-Light by Linotype
+   * URL: http://www.myfonts.com/fonts/linotype/din-next/pro-light/
+   * Copyright: Copyright &#x00A9; 2008 - 2009 Linotype GmbH, www.linotype.com. All rights
+   * reserved. This font software may not be reproduced, modified, disclosed or
+   * transferred without the express written approval of Linotype GmbH.
+   * 
+   * Webfont: DINNextLTPro-Regular by Linotype
+   * URL: http://www.myfonts.com/fonts/linotype/din-next/pro-regular/
+   * Copyright: Copyright &#x00A9; 2010 Linotype GmbH, www.linotype.com. All rights
+   * reserved. This font software may not be reproduced, modified, disclosed or
+   * transferred without the express written approval of Linotype GmbH.
+   * 
+   * 
+   * License: http://www.myfonts.com/viewlicense?type=web&buildid=3293297
+   * Licensed pageviews: 250,000
+   * 
+   * © 2016 MyFonts Inc
+  */
+  -->
+
+  <meta charset="utf-8">
+  <title>Home Page</title>
+
+  <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/css/MyFontsWebfontsKit.css">
+  <link rel="stylesheet" href="{{ site.github.url }}/css/main.css">
+
+  <style>
+
+    html, body {
+      background-color: #f1f1f1;
+      color: black;
+    }
+
+    p {
+      color: black;
+    }
+
+    a {
+      color: black;
+    }
+
+    a:hover {
+      color: red;
+    }
+
+    h1 {
+      color: black;
+    }
+
+    h2 {
+      color: black;
+    }
+
+    .cta {
+      color: {{ page.background-color }};
+      border: 1px solid {{ page.background-color }};
+    }
+
+      .cta:hover {
+        background-color: {{ page.background-color }};
+        color: {{  page.highlight-color }};
+      }
+
+    #introduction-wrapper {
+      background-color: {{  page.highlight-color }};
+    } 
+
+      #introduction-wrapper {
+        background: linear-gradient(0, {{ page.highlight-color }}, {{ page.shade-color }} 100%);
+      }
+
+      #introduction-wrapper #project-carousel div.item img{
+        box-shadow: 0 0 1.111111111vw rgba(0,0,0,0.2);
+      }
+
+      #introduction-wrapper #project-carousel div.item div.header{
+        background-color: {{ page.background-color }};
+      }
+
+        #introduction-wrapper #project-carousel div.item div.header div.circle {
+          background-color: {{  page.highlight-color }};
+        }
+
+              #project-nav #nav-previous:hover span{
+                border-right-color: {{  page.highlight-color }}; 
+              }
+
+              #project-nav #nav-next:hover span{
+                border-left-color: {{  page.highlight-color }}; 
+              }
+
+          #introduction #project-tags a {
+            color: {{ page.background-color }};
+          }
+
+          #introduction #project-tags a:hover {
+            color: {{ page.content-color }};
+          }
+
+            li.post div.media div.image, li.post div.media iframe {
+              background-color: white;
+              box-shadow: 0 0 1.111111111vw rgba(0,0,0,0.2);
+            }
+
+    #shade {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 100;
+      background: linear-gradient(25deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 20%, {{ page.shade-color }} 100%);
+      opacity: 0.2;
+    }
+
+    .post-list a {
+      color: {{ page.shade-color }};
+    }
+
+    .post-list a:hover {
+      color: {{ page.highlight-color }};
+    }
+
+
+  </style>
+
+</head>
+
+
+<body>
+  <div id="body-container">
+    <div id="introduction-wrapper">
+      <div id="header">
+        <div id="side-bar">
+          <a href="/">
+            <h1 id="logo">
+              Ian Ardouin-Fumat
+            </h1>
+          </a>
+          <div id="project-nav">
+            <a href="{{ site.github.url }}/projects/{{page.previous-project}}">
+              <div class="nav-button" id="nav-previous">
+                <span></span>
+              </div>
+            </a>
+            <a href="{{ site.github.url }}/projects/{{page.next-project}}">
+              <div class="nav-button" id="nav-next">
+                <span></span>
+              </div>
+            </a>
+          </div>
+          <p id="project-meta">
+            {% if page.year %} <span>Date:</span> {{page.year}}<br/>{% endif %}
+            {% if page.for %} <span>For:</span> <a href="{{page.for-link}}">{{page.for}}</a><br/>{% endif %}
+            {% if page.with %} <span>With:</span> <a href="{{page.with-link}}">{{page.with}}</a><br/>{% endif %}
+            {% if page.role %} <span>Role:</span> {{page.role}}<br/>{% endif %}
+            {% if page.press %} 
+              <span>Press:</span>
+                {% for outlet in page.press %}
+                  {{ outlet }}
+                {% endfor %}
+              <br/>
+            {% endif %}
+            {% if page.live-site %} 
+              <div class="cta">
+                <span>Visit Live Site</span>
+              </div>
+            {% endif %} 
+          </p>
+        </div>
+        <div id="introduction">
+          <h2 id="project-title">
+            {{page.title}}
+          </h2>
+          <div id="project-subtitle">
+            {{page.subtitle | markdownify}}
+          </div>
+        </div>
+      </div>
+
+      {% if page.carousel %}
+        <div id="project-carousel-wrapper">
+          <div id="carousel-next-button" class="disabled"><span></span></div>
+          <div id="project-carousel">
+          </div>
+        </div>
+      {% endif %}
+    </div>
+    {% if page.carousel %}
+      <div id="project-carousel-bumper">
+      </div>
+    {% endif %}
+
+    <ul class="post-list">
+      <li class="post" id="index">
+        {% if page.type != "essay" %}
+          <h2 class="post-title">
+            Index
+          </h2>
+          <ul id="index-table">
+            {% for post in site.categories[{{page.category}}] %}
+              <a class="index-link" href="#{{ post.anchor | remove: ' ' }}">
+                <li class="index-post">
+                  <div class="index-post-title">
+                    {{ post.title }}
+                  </div>
+                  <div class="index-post-date">
+                    {{ post.date | date: "%m/%d/%Y" }}
+                  </div>
+                </li>
+              </a>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </li>
+      {% for post in site.categories[{{page.category}}] %}
+        <li class="post" id="{{ post.anchor | remove: ' ' }}">
+          {% if page.type != "essay" %}
+            <h2 class="post-title">
+              {{ post.title }}
+            </h2>
+            <div class="post-meta">
+              <div class="post-date">{{ post.date | date: "%A, %B %-d, %Y" }}</div>
+            </div>
+          {% endif %}
+          <div class="post-content">
+          {{ post.content }}
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <div id="footer-nav">
+      <a href="{{ site.github.url }}/projects/{{page.previous-project}}">
+        <div class="nav-button" id="nav-previous">
+          <span></span>
+        </div>
+      </a>
+      <a href="/">
+        <div class="nav-button" id="nav-home">
+          <img src="{{ site.github.url }}/images/misc/home-button.svg"/>
+        </div>
+      </a>
+      <a href="{{ site.github.url }}/projects/{{page.next-project}}">
+        <div class="nav-button" id="nav-next">
+          <span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <script src="{{ site.github.url }}/js/smoothscroll.js"></script>
+  <script>
+
+    var contentImages = document.querySelectorAll('div.post-content img');
+    contentImages.forEach(function(image) {
+      var tempImage = document.createElement('img')
+      tempImage.src = image.src
+      tempImage.addEventListener('load', function(e) {
+        image.style.opacity = 1
+      })
+    })
+
+    var carousel = new Carousel()
+
+    var carouselImagesURL = {{ page.carousel | jsonify }}
+    if (carouselImagesURL.length !== 1 || carouselImagesURL[0].indexOf('player.vimeo.com') === -1) {
+      carouselImagesURL.forEach(function(url, id) {
+        var image = document.createElement('img')
+        image.src = '{{ site.github.url }}/images/' + url
+        if (url.indexOf('-p.') > -1) image.className = 'picture'
+        else image.className = 'screenshot'
+        image.addEventListener('load', function() {
+          carousel.addImage(image, id)
+        })
+      })
+    } else {
+      carousel.addVideo(carouselImagesURL[0])
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+    //   document.querySelector('#body-container').className = ''
+    //   window.addEventListener('beforeunload', function() {
+    //     document.querySelector('#body-container').className = 'transition'
+    //   })
+      initIndex()
+    })
+
+    function initIndex () {
+      document.querySelectorAll('.index-link')
+        .forEach(function(l) {
+          l.addEventListener('click', function(e) {
+            var postIndex = e.target.getAttribute('href')
+            e.preventDefault()
+
+            document.querySelector(postIndex).scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'end'
+            });
+            return false
+          })
+        })
+    }
+
+    function Carousel() {
+
+      var self = this
+      self.node = document.querySelector('#project-carousel')
+      self.width = self.node.clientWidth
+      self.height = 0
+      self.items = []
+      self.currentItemIndex = -1
+      self.interval = null
+      self.intervalDelay = 4000
+
+      self.setCarouselInterval = function (skip) {
+        if (!skip) self.nextItem()
+        window.clearInterval(self.interval)
+        self.interval = window.setInterval(function(){
+          self.nextItem()
+        }, self.intervalDelay)
+      }
+      self.setCarouselInterval(true)
+      self.node.addEventListener('click', function () {
+        self.setCarouselInterval()
+      })
+
+      self.addVideo = function (url) {
+        var itemNode = document.createElement('div')
+        itemNode.className = 'item'
+        self.node.appendChild(itemNode)
+        itemNode.innerHTML = '<iframe class="youtube" src="' + url + '" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
+        resizeVideoIFrame()
+      }
+
+      self.addImage = function (image, id) {
+        
+        var tempItems = self.items.slice(0)
+        for (var i = 0; i <= id; i++) {
+          var tempImage = tempItems[i]
+          if (!tempImage || tempImage.id > id) {
+            tempItems.splice(i, 0, {img: image, id: id})
+            break
+          }
+        }
+
+        if (self.items.length != tempItems.length) {
+          self.items = tempItems
+          while (self.node.firstChild) {
+            self.node.removeChild(self.node.firstChild);
+          }
+        }
+
+        self.items.forEach(function (item, i) {
+          var itemNode = document.createElement('div')
+          itemNode.className = 'item'
+          if(i === 0) itemNode.className += ' fade-in'
+          else itemNode.className += ' hidden'
+          self.node.appendChild(itemNode)
+          item.itemNode = itemNode
+          var headerNode = document.createElement('div')
+          headerNode.className = 'header'
+          if (item.img.className.indexOf('picture') === -1) {
+            headerNode.innerHTML = '<div class="circle"></div><div class="circle"></div><div class="circle"></div>'
+            itemNode.appendChild(headerNode)
+          }
+          itemNode.appendChild(item.img)
+          item.headerNode = headerNode
+        })
+
+        self.updateLayout()
+
+      }
+
+      self.updateLayout = function () {
+
+        if (self.items.length > 1) document.querySelector('#carousel-next-button').className = ''
+
+        self.width = self.node.clientWidth
+        self.height = self.node.clientHeight
+
+        self.items.forEach(function (item, i) {
+          if (item.img.width / self.width > item.img.height / self.height) {
+            item.img.style.width = '100%'
+            item.img.style.height = null
+            item.headerNode.style.width = '100%'
+            item.headerNode.style.top = (self.height - item.img.clientHeight) / 2
+            item.headerNode.style.transform = 'translate(-50%, -50%)'
+          } else {
+            item.img.style.height = 'calc(100% - 2.222222222vw)'
+            item.img.style.width = null
+            item.headerNode.style.width = item.img.width
+            item.headerNode.style.top = 0
+            item.headerNode.style.transform = 'translate(-50%, 0)'
+          }
+        })
+
+      }
+
+      self.nextItem = function() {
+        if (self.items.length > 0) {
+          if (self.items.length > 1) {
+            document.querySelector('#carousel-next-button').className = 'active'
+            window.setTimeout(function() {
+              document.querySelector('#carousel-next-button').className = ''
+            },100)
+          }
+          var lastItem = self.items[self.currentItemIndex]
+          self.currentItemIndex = (self.currentItemIndex + 1) % self.items.length
+          var nextItem = self.items[self.currentItemIndex]
+          if (lastItem) lastItem.itemNode.className = 'item fade-out'
+          if (nextItem) nextItem.itemNode.className = 'item fade-in'
+        }
+      }
+
+      return self
+    }
+
+    function resizeVideoIFrame () {
+      document.querySelectorAll('iframe.youtube').forEach(function(video){
+        var width = video.parentNode.offsetWidth
+        var height = width / (16 / 9)
+        video.style.width = width
+        video.style.height = height
+      })
+    }
+    resizeVideoIFrame()
+
+    window.addEventListener('resize', function () {
+      carousel.updateLayout()
+      resizeVideoIFrame()
+    })      
+
+  </script>
+
+</body>

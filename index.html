@@ -1,0 +1,235 @@
+---
+layout: default
+---
+
+
+<head>
+
+  <!-- 
+
+    TODO: 
+      HOME
+          add an arrow at the bottom of the screen
+          favicon
+        true responsiveness
+        change layout subtitles
+        nicer intro/outro animation 
+      PROJECTS
+        add underline links
+        all external links into target="_blank"
+        responsiveness
+        add intro/outro animation
+        homepage button hover state
+        home and up side button
+        add box-shadow to videos
+        add margin to index's dates
+        small images in project page
+      HOSTING
+          route ian.earth
+      CONTENT
+        optimize design capture compression?
+      CODE
+        fast loading for webfonts
+        remove ugly span in footer
+        refactor CSS
+
+
+   -->
+
+  <!--
+  /**
+   * @license
+   * MyFonts Webfont Build ID 3319925, 2016-12-12T10:19:51-0500
+   * 
+   * The fonts listed in this notice are subject to the End User License
+   * Agreement(s) entered into by the website owner. All other parties are 
+   * explicitly restricted from using the Licensed Webfonts(s).
+   * 
+   * You may obtain a valid license at the URLs below.
+   * 
+   * Webfont: DINNextLTPro-Light by Linotype
+   * URL: http://www.myfonts.com/fonts/linotype/din-next/pro-light/
+   * Copyright: Copyright &#x00A9; 2008 - 2009 Linotype GmbH, www.linotype.com. All rights
+   * reserved. This font software may not be reproduced, modified, disclosed or
+   * transferred without the express written approval of Linotype GmbH.
+   * 
+   * Webfont: DINNextLTPro-Regular by Linotype
+   * URL: http://www.myfonts.com/fonts/linotype/din-next/pro-regular/
+   * Copyright: Copyright &#x00A9; 2010 Linotype GmbH, www.linotype.com. All rights
+   * reserved. This font software may not be reproduced, modified, disclosed or
+   * transferred without the express written approval of Linotype GmbH.
+   * 
+   * 
+   * License: http://www.myfonts.com/viewlicense?type=web&buildid=3319925
+   * Licensed pageviews: 250,000
+   * 
+   * © 2016 MyFonts Inc
+  */
+  -->
+
+  <meta charset="utf-8">
+  <title>Home Page</title>
+  <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/css/MyFontsWebfontsKit.css">
+  <link rel="stylesheet" href="{{ site.github.url }}/css/main.css">
+
+  <style type="text/css">
+    #rect1 { fill: url(#Gradient1); }
+    {% for project in site.projects reversed %}
+      .stop-{{project.category}}-0 { stop-color: {{project.shade-color}}; }
+      .stop-{{project.category}}-1 { stop-color: {{project.highlight-color}}; }
+    {% endfor %}
+    .stop-about-0 { stop-color: #666; }
+    .stop-about-1 { stop-color: #ccc; }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="body-container">
+    <div id="introduction-wrapper" class="home">
+      <svg width="100%" height="100%" version="1.1" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
+              {% for project in site.projects reversed %}
+                {% if project.firstProject %}
+                  <stop class="stop-{{project.category}}-0" offset="0%"/>
+                  <stop class="stop-{{project.category}}-1" offset="100%"/>
+                {% endif %}
+              {% endfor %}
+            </linearGradient>
+                    </defs>
+        <rect id="rect1" x="0" y="0" rx="0" ry="0" width="1" height="1"/>        
+      </svg>
+      <div id="header">
+        <div id="side-bar">
+          <a href="/">
+            <h1 id="logo">
+              Ian Ardouin-Fumat
+            </h1>
+          </a>
+          <p id="projects">
+            <span>Projects:</span><br/>
+            {% for project in site.projects reversed %}
+              <a href="{{ site.github.url }}/projects/{{project.category}}/">{{ project.title }}</a><br/>
+            {% endfor %}
+          </p>
+          <p id="about">
+            About
+          </p>
+        </div>
+        <div id="project-grid">
+          {% for project in site.projects reversed %}
+            <div class="project inactive">
+              <a href="{{ site.github.url }}/projects/{{project.category}}/">
+                <img class="content" src="{{ site.github.url }}/images/{{project.category}}/homepage/homepage.jpg" />
+<!--                 <div class="subtitle" id="project-subtitle">
+                  {{project.subtitle | markdownify}}
+                </div>
+ -->              
+              </a>
+            </div>
+          {% endfor %}
+          <div class="project inactive">
+            <p class="content">
+              I am a socially-conscious technologist based in Brooklyn, NY.
+              <br/><br/>
+              Trained as an interaction designer in France, I've practiced creative coding and critical thinking around technology for <a href="https://ocr.nyc" target="_blank">the Office Creative Research</a> since its inception in 2012. My work revolves around the intersection of data with civil rights, information security, environmental conservation, and the art world. 
+              <br/><br/>
+              These days, I am exploring how peer-to-peer technologies can foster people's digital agency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    var spacePerProject = 100
+    var projectCount = {{ site.projects | size | jsonify }}
+    var projectCategories = []
+    {% for project in site.projects reversed %}
+      projectCategories.push({{project.category | jsonify}})
+    {% endfor %}
+    projectCategories.push('about')
+
+    var activeProjectIndex = -1
+
+    function updateBackgroundColor () {
+      document.querySelectorAll('#introduction-wrapper svg stop')
+        .forEach(function (s, i) {
+          s.setAttribute('class', 'stop-' + projectCategories[activeProjectIndex] + '-' + i)
+        })
+    }
+
+    function resize () {
+      var wrapperPadding = 0.0333333 * window.innerWidth
+      var bodyPadding = 2 * 0.0111111111 * window.innerWidth
+      document.querySelector('#introduction-wrapper').style.minHeight = (window.innerHeight - bodyPadding - wrapperPadding + (projectCount) * spacePerProject) + 'px'
+    }
+
+    function updateProjectGrid () {
+
+      var projects = Array.prototype.slice.call(document.querySelectorAll('#project-grid .project'))
+
+      document.querySelector('#introduction-wrapper').style.height
+      var newActiveProjectIndex = Math.max(Math.min(Math.floor((document.body.scrollTop + spacePerProject / 2) / spacePerProject), projectCount),0)
+
+      if (activeProjectIndex !== newActiveProjectIndex) {
+
+        activeProjectIndex = newActiveProjectIndex
+
+        projects
+          .filter(function(p, i) {
+            return i === activeProjectIndex
+          })
+          .forEach(function(p) {
+            p.className = 'project'
+          })
+
+        projects
+          .filter(function(p, i) {
+            return i > activeProjectIndex
+          })
+          .forEach(function(p, i) {
+            p.className = 'project inactive bottom'
+          })
+
+        projects
+          .filter(function(p, i) {
+            return i < activeProjectIndex
+          })
+          .forEach(function(p) {
+            p.className = 'project inactive top'
+          })
+
+        document.querySelectorAll('#projects a')
+          .forEach(function(a, i) {
+            a.className = i === activeProjectIndex ? 'active' : ''
+          })
+
+        document.querySelectorAll('#about')
+          .forEach(function(a) {
+            a.className = activeProjectIndex === projects.length - 1 ? 'active' : ''
+          })
+
+        updateBackgroundColor()
+      }
+
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      window.addEventListener('resize', resize)
+      document.addEventListener('scroll', updateProjectGrid)
+      resize()
+      updateProjectGrid()
+      // document.querySelector('#body-container').className = ''
+      // window.addEventListener('beforeunload', function() {
+      //   document.querySelector('#body-container').className = 'transition'
+      // })
+    })
+
+  </script>
+
+</body>
