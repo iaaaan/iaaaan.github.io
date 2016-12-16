@@ -1,5 +1,5 @@
 ---
-title:  "Microsoft Specimen Box"
+title:  "Specimen Box"
 subtitle: "What do botnets tell us when given a voice? Specimen Box is a research tool that lets us explore the personality of those malware networks."
 category: specimen-box
 date:   "2014-02-01 00:00:00 -0500"
