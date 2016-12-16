@@ -323,6 +323,16 @@ td {
       line-height: $line * 3.5;
     }
 
+      #project-subtitle a{
+        color: #f1f1f1;
+        border-bottom: 1px solid #f1f1f1;
+      }
+
+        #project-subtitle a:hover{
+          color: white;
+          border-bottom: 1px solid white;
+        }
+
     #project-nav{
       position: relative;
       display: flex;
@@ -767,16 +777,6 @@ td {
         line-height: $line-min * 3;
         font-size: $font-subtitle-min;
       }
-
-        #project-subtitle a{
-          color: #f1f1f1;
-          border-bottom: 1px solid #f1f1f1;
-        }
-
-          #project-subtitle a:hover{
-            color: white;
-            border-bottom: 1px solid white;
-          }
 
       #introduction #project-tags{
         margin-bottom: $line-min / 2;
