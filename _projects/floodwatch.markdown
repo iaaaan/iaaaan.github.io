@@ -6,7 +6,7 @@ date:   "2016-10-02 00:00:00 -0500"
 year: "2014 to 2016"
 for: "Ford Foundation"
 for-link: "https://www.fordfoundation.org/"
-with: "The Office for Creative Research"
+with: "The OCR"
 with-link: "https://ocr.nyc/"
 role: "Interface design lead, Frontend development lead"
 carousel: ['https://player.vimeo.com/video/99077061']

@@ -4,7 +4,7 @@ subtitle: "In 1996, [Lev Manovich described](http://manovich.net/index.php/proje
 category: radiant-city
 date:   "2016-11-21 20:42:00 -0500"
 year: "2016"
-for: "The Office for Creative Research"
+for: "The OCR"
 for-link: "http://ocr.nyc/"
 carousel: ['/radiant-city/carousel/building-p.jpg']
 background-color: '#E3EBEB'

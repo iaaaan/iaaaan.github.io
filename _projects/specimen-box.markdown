@@ -6,7 +6,7 @@ date:   "2014-02-01 00:00:00 -0500"
 year: "Winter 2014"
 for: "Microsoft Cybercrime Unit"
 for-link: "https://news.microsoft.com/presskits/dcu/#sm.00000b7w8fnigif79rsp9bqb4m5p1"
-with: "The Office for Creative Research"
+with: "The OCR"
 with-link: "https://ocr.nyc/"
 role: "Interface design lead, Processing development"
 carousel: ['/specimen-box/carousel/specimenBox_1-p.jpg','/specimen-box/carousel/specimenBox_2-p.jpg','/specimen-box/carousel/specimenBox_3-p.jpg','/specimen-box/carousel/specimenBox_4-p.jpg','/specimen-box/carousel/specimenBox_5-p.jpg','/specimen-box/carousel/specimenBox_6-p.jpg','/specimen-box/carousel/specimenBox_7-p.jpg']
