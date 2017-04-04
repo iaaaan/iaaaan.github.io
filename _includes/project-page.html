@@ -38,109 +38,78 @@
   <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/css/MyFontsWebfontsKit.css">
   <link rel="stylesheet" href="{{ site.github.url }}/css/main.css">
 
-  <style>
-
-    html, body {
-      background-color: #f1f1f1;
-      color: black;
-    }
-
-    p {
-      color: black;
-    }
-
-    a {
-      color: black;
-    }
-
-    a:hover {
-      color: red;
-    }
-
-    h1 {
-      color: black;
-    }
-
-    h2 {
-      color: black;
-    }
-
-    .cta {
-      color: {{ page.background-color }};
-      border: 1px solid {{ page.background-color }};
-    }
-
-      .cta:hover {
-        background-color: {{ page.background-color }};
-        color: {{  page.highlight-color }};
-      }
-
-    #introduction-wrapper {
-      background-color: {{  page.highlight-color }};
-    } 
-
-      #introduction-wrapper {
-        background: linear-gradient(0, {{ page.highlight-color }}, {{ page.shade-color }} 100%);
-      }
-
-      #introduction-wrapper #project-carousel div.item img{
-        box-shadow: 0 0 1.111111111vw rgba(0,0,0,0.2);
-      }
-
-      #introduction-wrapper #project-carousel div.item div.header{
-        background-color: {{ page.background-color }};
-      }
-
-        #introduction-wrapper #project-carousel div.item div.header div.circle {
-          background-color: {{  page.highlight-color }};
-        }
-
-              #project-nav #nav-previous:hover span{
-                border-right-color: {{  page.highlight-color }}; 
-              }
-
-              #project-nav #nav-next:hover span{
-                border-left-color: {{  page.highlight-color }}; 
-              }
-
-          #introduction #project-tags a {
-            color: {{ page.background-color }};
-          }
-
-          #introduction #project-tags a:hover {
-            color: {{ page.content-color }};
-          }
-
-            li.post div.media div.image, li.post div.media iframe {
-              background-color: white;
-              box-shadow: 0 0 1.111111111vw rgba(0,0,0,0.2);
-            }
-
-    #shade {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 100;
-      background: linear-gradient(25deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 20%, {{ page.shade-color }} 100%);
-      opacity: 0.2;
-    }
-
-    .post-list a {
-      color: {{ page.shade-color }};
-    }
-
-    .post-list a:hover {
-      color: {{ page.highlight-color }};
-    }
-
-
-  </style>
-
 </head>
 
 
 <body>
+
+  <h1 class="logo">
+    Ian Ardouin-Fumat (actions)
+  </h1>
+  <div class="project">
+    <div class="project_title">
+      <div class="project_title_links">
+      </div>
+    </div>
+    <div class="project_about">
+      <p class="project_about_section-selector">
+        Overview / Process
+      </p>
+      <p class="project_about_description">
+        {{ page.subtitle }}
+      </p>
+      <p class="project_about_meta">
+        Design Lead and Frontend Dev Lead with The Office for Creative Research, for National Geographic 
+      </p>
+    </div>
+    {% if page.hasGallery %}
+      {% for post in site.categories[{{page.category}}] %}
+        {% if post.type == "gallery" %}
+          <div class="project_gallery">
+            {{ post.content }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  </div>
+  
+  {% if page.hasPosts %}
+    <div class="process">
+      <div class="process_title">
+        <h2 class="process_title_name">
+          {{ page.title }}
+        </h2>
+        <div class="process_title_section-selector">
+          Overview / Process
+        </div>
+      </div>
+      <div class="process_posts">
+        {% for post in site.categories[{{page.category}}] %}
+          {% if post.type == "process" %}
+            <div class="process_posts_post">
+              <div class="process_posts_title">
+                <div class="proces_posts_title_date">
+                   {{ post.date | date: "%m/%d/%Y" }}
+                </div>
+                <div class="proces_posts_title_name">
+                  {{ post.name }}
+                </div>
+              </div>
+              <div class="process_posts_post_content">
+                {{ post.content }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="footer">
+    <h1>Ian Ardouin-Fumat</h1>
+  </div>
+
+
+  <!--
   <div id="body-container">
     <div id="introduction-wrapper">
       <div id="header">
@@ -444,5 +413,6 @@
     })      
 
   </script>
+  -->
 
 </body>
