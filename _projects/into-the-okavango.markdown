@@ -11,8 +11,9 @@ with-link: "https://ocr.nyc/"
 role: "Design Lead and Frontend Dev Lead"
 hasPosts: true
 hasGallery: true
+description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis faucibus mauris. Sed justo augue, aliquet lobortis maximus a, dapibus non elit. Etiam quis mi leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique faucibus purus et commodo. Duis dui nulla, pellentesque sit amet odio vitae, imperdiet imperdiet nulla. Nullam quis accumsan dui."
 
-carousel: ['/into-the-okavango/carousel/map1.jpg','/into-the-okavango/carousel/journal1.jpg','/into-the-okavango/carousel/journal3.jpg','/into-the-okavango/2016/journal4.jpg']
+carousel: [aga, foo, bar]
 background-color: '#E3EBEB'
 highlight-color: '#B2DF8A'
 shade-color: '#82BC95'

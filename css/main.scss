@@ -40,7 +40,7 @@ body {
 
 p {
   margin-top: 0;
-  margin-bottom: $line-height * 1.5;
+  margin-bottom: $line-height * 2;
 
   &:last-child {
     margin-bottom: 0;
@@ -149,9 +149,11 @@ img.button {
 }
 
 .body {
-  padding: $line-height * 2 $line-width * 2;
+  padding: $line-height * 4 $line-height * 2 0 $line-height * 2;
+  padding-bottom: 0;
 
   &.process {
+    padding-top: $line-height * 2;
     background-color: $white;
     color: black;
   }
@@ -295,11 +297,15 @@ img.button {
 
     &_description {
       margin-top: $line-height * 2;
-      margin-bottom: $line-height;
+      margin-bottom: $line-height * 2;
     }
 
     &_meta {
       color: $dark-gray;
+
+      &_role {
+        margin-bottom: 0;
+      }
 
       & a {
         text-decoration: underline;
@@ -310,16 +316,49 @@ img.button {
         }
       }
     }
+
+  }
+  
+  &_gallery {
+    margin-top: $line-height * 3;
+    margin-bottom: -$line-height * 2;
+
+    & img {
+      flex: 1;
+      width: 100%;
+      height: auto;
+    }
+
+    & p {
+      padding: $line-width * 4 $line-width * 8;
+      margin: 0;
+      font-size: $font-headline;
+      line-height: $line-height * 2;
+      font-weight: normal;
+
+      &:last-child {
+        padding-bottom: $line-width * 4;
+      }
+    }
+
+    & .columns {
+      margin-top: 1px;
+      display: flex;
+
+      & div:not(:last-child) {
+        margin-right: 1px;
+      }
+    }
   }
 }
 
 .process {
+  padding-top: $line-height * 2;
 
   &_title {
     display: flex;
-    padding: $line-height * 4 0;
+    padding-top: $line-height * 4;
     transition: opacity 0.3s;
-    border-bottom: 1px solid lighten($light-gray, 20%);
 
     @include tablet-portrait-down {
       display: block;
@@ -366,8 +405,8 @@ img.button {
   &_posts {
 
     &_post {
-      margin-top: $line-height * 6;
-      padding-bottom: $line-height * 6;
+      margin-top: $line-height * 5;
+      padding-bottom: $line-height * 5;
       border-bottom: 1px solid lighten($light-gray, 20%);
 
       &_title {
@@ -406,8 +445,13 @@ img.button {
 
         & .media {
           display: flex;
-          margin-bottom: $line-height  * 2;
+          margin-bottom: $line-height  * 4;
+          margin-top: $line-height  * 4;
           width: $line-width * 44;
+
+          &:last-child {
+            margin-bottom: $line-height * 2;
+          }
 
           & img {
             display: block;

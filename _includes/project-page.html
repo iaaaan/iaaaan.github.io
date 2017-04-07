@@ -84,21 +84,36 @@
         </h3>
         <h4 class="overview_about_description">
           {{ page.subtitle }}
-        </h4>
-        <p class="overview_about_meta">
-          {{ page.role }} with <a target="_blank" href="{{ page.with-link }}">{{ page.with }}</a>, for <a target="_blank" href="{{ page.for-link }}">{{ page.for }}</a>.
-        </p>
-      </div>
-      {% if page.hasGallery %}
-        {% for post in site.categories[{{page.category}}] %}
-          {% if post.type == "gallery" %}
-            <div class="overview_gallery">
-              {{ post.content }}
-            </div>
+          {% if page.description %}
+            <br/><br/>
+            {{ page.description }}
           {% endif %}
-        {% endfor %}
-      {% endif %}
+        </h4>
+        <div class="overview_about_meta">
+          <p class="overview_about_meta_role">
+            {{ page.role }} with <a target="_blank" href="{{ page.with-link }}">{{ page.with }}</a>, for <a target="_blank" href="{{ page.for-link }}">{{ page.for }}</a>.
+          </p>
+          {% if page.press %} 
+            <p>
+              <span>Press:</span>
+                {% for outlet in page.press %}
+                  {{ outlet }}
+                {% endfor %}
+              <br/>
+            </p>
+          {% endif %}
+        </div>
+      </div>
     </div>
+    {% if page.hasGallery %}
+      {% for post in site.categories[{{page.category}}] %}
+        {% if post.type == "overview" %}
+          <div class="overview_gallery">
+            {{ post.content }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </div>
   {% if page.hasPosts %}
     <div class="body process">
