@@ -3,12 +3,15 @@ title:  "Into the Okavango"
 subtitle: "Can we make open science accessible beyond academia? Into the Okavango turns a field expedition in Botswana into an immersive online experience and a user-friendly API."
 category: into-the-okavango
 date:   "2016-12-02 14:54:00 -0500"
-year: "2014 to 2016"
+year: "2014-2016"
 for: "National Geographic"
 for-link: "http://www.nationalgeographic.com/"
-with: "The OCR"
+with: "the Office for Creative Research"
 with-link: "https://ocr.nyc/"
-role: "Lead Design & Frontend Development"
+role: "Design Lead and Frontend Dev Lead"
+hasPosts: true
+hasGallery: true
+
 carousel: ['/into-the-okavango/carousel/map1.jpg','/into-the-okavango/carousel/journal1.jpg','/into-the-okavango/carousel/journal3.jpg','/into-the-okavango/2016/journal4.jpg']
 background-color: '#E3EBEB'
 highlight-color: '#B2DF8A'
