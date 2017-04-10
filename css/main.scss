@@ -17,8 +17,6 @@ $white: #ffffff;
   @media (max-width: 800px) { @content; }
 }
 
-
-
 html, body {
   font-size: $font-body;
   line-height: $line-height * 1.5;
@@ -151,18 +149,21 @@ img.button {
 .body {
   padding: $line-height * 4 $line-height * 2 0 $line-height * 2;
   padding-bottom: 0;
+  position: relative;
+  z-index: 1;
 
   &.process {
     padding-top: $line-height * 2;
     background-color: $white;
     color: black;
+    z-index: 0;
   }
 }
 
 .about {
   display: flex;
   border-bottom: 1px solid darken($dark-gray,20%);
-  padding-bottom: $line-height * 2;
+  padding-bottom: $line-height * 4;
 
   @include tablet-portrait-down {
     display: block;
@@ -186,7 +187,7 @@ img.button {
 
   &_project {
     display: flex;
-    padding: $line-height * 2 0;
+    padding: $line-height * 4 0;
     border-bottom: 1px solid darken($dark-gray,20%);
     transition: opacity 0.3s;
 
@@ -264,6 +265,10 @@ img.button {
   &_about {
     flex-basis: $line-width * 60;
 
+    &.padding {
+      padding-bottom: 4 * $line-height;
+    }
+
     &_section-selector {
 
       @include tablet-portrait-down {
@@ -298,6 +303,10 @@ img.button {
     &_description {
       margin-top: $line-height * 2;
       margin-bottom: $line-height * 2;
+
+      & a {
+        border-bottom: 1px solid $white;
+      }
     }
 
     &_meta {
@@ -322,6 +331,8 @@ img.button {
   &_gallery {
     margin-top: $line-height * 3;
     margin-bottom: -$line-height * 2;
+    background-color: $black;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 
     & img {
       flex: 1;
@@ -345,10 +356,22 @@ img.button {
       margin-top: 1px;
       display: flex;
 
+      @include tablet-portrait-down {
+        display: block;
+      }
+
       & div:not(:last-child) {
         margin-right: 1px;
+
+        @include tablet-portrait-down {
+          margin-bottom: 1px;
+        }
       }
     }
+  }
+
+  &_padding {
+    margin-bottom: -$line-height * 2;
   }
 }
 
@@ -497,6 +520,7 @@ img.button {
             margin-left: -$line-width * 16;
           }
 
+
           &.l {
             width: $line-width * 60;
           }
@@ -517,6 +541,20 @@ img.button {
 
             & img {
               width: 100%;
+            }
+          }
+          
+          &.s {
+            width: $line-width * 60;
+
+            & .image {
+              background-color: transparent !important;
+
+              & img {
+                margin: auto;
+                display: block;
+                width: initial !important;
+              }
             }
           }
 
@@ -547,10 +585,67 @@ img.button {
             }
           }
         }
+
+        & .nb {
+          color: $light-gray;
+          font-style: italic;
+          font-weight: 300;
+        }
       }
     }
   }
 }
+
+.footer {
+  display: flex;
+  padding: $line-width * 4 0;
+
+  @include tablet-portrait-down {
+    display: block;
+  }
+
+  &_title {
+    flex-basis: $line-width * 12;
+    margin-right: $line-width * 4;
+
+    @include tablet-portrait-down {
+      margin-bottom: $line-height * 2;
+    }
+  }
+
+  &_index {
+    flex-basis: $line-width * 44;
+    color: $light-gray;
+
+    & a {
+      color: $light-gray;
+      transition: color 0.15s;
+
+      &:hover {
+        color: $black;
+      }
+    }
+  }
+}
+
+.body:not(.process) {
+
+  & .footer {
+
+    &_index {
+      color: $dark-gray;
+
+      & a {
+        color: $dark-gray;
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
 
 
 

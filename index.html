@@ -41,6 +41,10 @@ layout: default
   <title>Ian Ardouin-Fumat</title>
   <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/css/MyFontsWebfontsKit.css">
   <link rel="stylesheet" href="/css/main.css">
+
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-96x96.png" sizes="96x96">
 </head>
 
 <body>
@@ -93,7 +97,47 @@ layout: default
       {% endfor %}
     </div>
     <div class="footer">
-      <h1>Ian Ardouin-Fumat</h1>
+      <div class="footer">
+        <div class="footer_title">
+          <a href="/">
+            <h1 class="footer_title_logo">
+              Ian Ardouin-Fumat
+            </h1>
+          </a>
+          <div class="footer_title_links">
+            <a href="mailto:ian.ardouin@gmail.com">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-email.svg">
+            </a>
+            <a href="{{ site.github.url }}/documents/ian-ardouin-resume.pdf">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-cv.svg">
+            </a>
+          </div>
+        </div>
+        <div class="footer_index">
+          {% assign years = "2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012" | split: "," %}          
+          {% for y in years %}
+            {% assign emptyYear = 0 %}
+            {% for project in site.projects reversed %}
+              {% assign year = y | plus: 0 %}
+              {% assign projectYear = project.year | split: "-" | last | plus: 0 %}
+              {% if projectYear == year %}
+                {% if emptyYear == 0 %}
+                  <div class="footer_index_project">
+                    {{ year }}:
+                {% endif %}
+                {% assign emptyYear = emptyYear | plus: 1 %}
+                {% if emptyYear > 1 %}
+                  •
+                {% endif %}
+                <a href="{{ site.github.url }}/projects/{{ project.category }}">{{ project.title }}</a>
+              {% endif %}
+            {% endfor %}
+            {% if emptyYear > 0 %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
 
