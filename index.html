@@ -5,36 +5,8 @@ layout: default
 
 <head>
 
-  <!-- 
-
-    TODO: 
-      HOME
-          add an arrow at the bottom of the screen
-          favicon
-        true responsiveness
-        change layout subtitles
-        nicer intro/outro animation 
-      PROJECTS
-        add underline links
-        all external links into target="_blank"
-        responsiveness
-        add intro/outro animation
-        homepage button hover state
-        home and up side button
-        add box-shadow to videos
-        add margin to index's dates
-        small images in project page
-      CONTENT
-        optimize design capture compression?
-      CODE
-        fast loading for webfonts
-        remove ugly span in footer
-        refactor CSS
-
-
-   -->
-
   <!--
+  
   /**
    * @license
    * MyFonts Webfont Build ID 3319925, 2016-12-12T10:19:51-0500
@@ -68,166 +40,143 @@ layout: default
   <meta charset="utf-8">
   <title>Ian Ardouin-Fumat</title>
   <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/css/MyFontsWebfontsKit.css">
-  <link rel="stylesheet" href="{{ site.github.url }}/css/main.css">
+  <link rel="stylesheet" href="/css/main.css">
 
-  <style type="text/css">
-    #rect1 { fill: url(#Gradient1); }
-    {% for project in site.projects reversed %}
-      .stop-{{project.category}}-0 { stop-color: {{project.shade-color}}; }
-      .stop-{{project.category}}-1 { stop-color: {{project.highlight-color}}; }
-    {% endfor %}
-    .stop-about-0 { stop-color: #666; }
-    .stop-about-1 { stop-color: #ccc; }
-  </style>
-
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-96x96.png" sizes="96x96">
 </head>
 
 <body>
-
-  <div id="body-container">
-    <div id="introduction-wrapper" class="home">
-      <svg width="100%" height="100%" version="1.1" viewBox="0 0 1 1" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <linearGradient id="Gradient1" x1="0" x2="0" y1="0" y2="1">
-              {% for project in site.projects reversed %}
-                {% if project.firstProject %}
-                  <stop class="stop-{{project.category}}-0" offset="0%"/>
-                  <stop class="stop-{{project.category}}-1" offset="100%"/>
-                {% endif %}
-              {% endfor %}
-            </linearGradient>
-                    </defs>
-        <rect id="rect1" x="0" y="0" rx="0" ry="0" width="1" height="1"/>        
-      </svg>
-      <div id="header">
-        <div id="side-bar">
+  <div class="body">
+    <div class="about">
+      <div class="about_title">
+        <a href="/">
+          <h1 class="about_title_logo">
+            Ian Ardouin-Fumat
+          </h1>
+        </a>
+        <div class="about_title_links">
+          <a href="mailto:ian.ardouin@gmail.com">
+            <img class="button" src="{{ site.github.url }}/images/misc/icon-email.svg">
+          </a>
+          <a href="{{ site.github.url }}/documents/ian-ardouin-resume.pdf">
+            <img class="button" src="{{ site.github.url }}/images/misc/icon-cv.svg">
+          </a>
+        </div>
+      </div>
+      <div class="about_bio">
+        <p>
+          Trained as an interaction designer in France, I've practiced creative coding and critical thinking around technology since 2012. My work revolves around the intersection of data and civil rights, information security, environmental conservation, and the art world.
+        </p>
+        <p>
+          These days, I am exploring how peer-to-peer technologies can foster people's digital agency.
+        </p>
+      </div>
+    </div>
+    <div class="projects">
+      {% for project in site.projects reversed %}
+        <a href="{{ site.github.url }}/projects/{{project.category}}/">
+          <div class="projects_project {% if forloop.index > 0 %}inactive{% endif %}" href="{{ site.github.url }}/projects/{{project.category}}/">
+            <div class="projects_project_title">
+              <h2 class="projects_project_title_name">
+                {{ project.title }}
+              </h2>
+              <h3 class="project_project_title_date">
+                {{ project.year }}
+              </h3>
+            </div>
+            <div class="projects_project_subtitle">
+              {{ project.subtitle | markdownify }}
+            </div>
+            <div class="projects_project_image">
+              <img src="{{ site.github.url }}/images/{{project.category}}/homepage/homepage.jpg"/>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <div class="footer">
+      <div class="footer">
+        <div class="footer_title">
           <a href="/">
-            <h1 id="logo">
+            <h1 class="footer_title_logo">
               Ian Ardouin-Fumat
             </h1>
           </a>
-          <p id="projects">
-            <span>Projects:</span><br/>
-            {% for project in site.projects reversed %}
-              <a href="{{ site.github.url }}/projects/{{project.category}}/">{{ project.title }}</a><br/>
-            {% endfor %}
-          </p>
-          <p id="about">
-            About
-          </p>
-        </div>
-        <div id="project-grid">
-          {% for project in site.projects reversed %}
-            <div class="project inactive">
-              <a href="{{ site.github.url }}/projects/{{project.category}}/">
-                <img class="content" src="{{ site.github.url }}/images/{{project.category}}/homepage/homepage.jpg" />
-<!--                 <div class="subtitle" id="project-subtitle">
-                  {{project.subtitle | markdownify}}
-                </div>
- -->              
-              </a>
-            </div>
-          {% endfor %}
-          <div class="project inactive">
-            <p class="content">
-              I am a technologist focused on data and ethics.
-              <br/><br/>
-              Trained as an interaction designer in France, I've practised creative coding and critical thinking around technology for <a href="https://ocr.nyc" target="_blank">the Office Creative Research</a> since its inception in 2012. My work revolves around the intersection of data and civil rights, information security, environmental conservation, and the art world. 
-              <br/><br/>
-              These days, I am exploring how peer-to-peer technologies can foster people's digital agency.
-            </p>
+          <div class="footer_title_links">
+            <a href="mailto:ian.ardouin@gmail.com">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-email.svg">
+            </a>
+            <a href="{{ site.github.url }}/documents/ian-ardouin-resume.pdf">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-cv.svg">
+            </a>
           </div>
+        </div>
+        <div class="footer_index">
+          {% assign years = "2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012" | split: "," %}          
+          {% for y in years %}
+            {% assign emptyYear = 0 %}
+            {% for project in site.projects reversed %}
+              {% assign year = y | plus: 0 %}
+              {% assign projectYear = project.year | split: "-" | last | plus: 0 %}
+              {% if projectYear == year %}
+                {% if emptyYear == 0 %}
+                  <div class="footer_index_project">
+                    {{ year }}:
+                {% endif %}
+                {% assign emptyYear = emptyYear | plus: 1 %}
+                {% if emptyYear > 1 %}
+                  •
+                {% endif %}
+                <a href="{{ site.github.url }}/projects/{{ project.category }}">{{ project.title }}</a>
+              {% endif %}
+            {% endfor %}
+            {% if emptyYear > 0 %}
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
     </div>
   </div>
 
   <script>
-
-    var spacePerProject = 100
+    var activeProjectID = 0
     var projectCount = {{ site.projects | size | jsonify }}
-    var projectCategories = []
-    {% for project in site.projects reversed %}
-      projectCategories.push({{project.category | jsonify}})
-    {% endfor %}
-    projectCategories.push('about')
+    
+    document.addEventListener("DOMContentLoaded", updateActiveProject)
+    document.addEventListener('scroll', updateActiveProject)
+    document.addEventListener('mousemove', updateActiveProject)
+    document.addEventListener('resize', updateActiveProject)
 
-    var activeProjectIndex = -1
-
-    function updateBackgroundColor () {
-      document.querySelectorAll('#introduction-wrapper svg stop')
-        .forEach(function (s, i) {
-          s.setAttribute('class', 'stop-' + projectCategories[activeProjectIndex] + '-' + i)
-        })
-    }
-
-    function resize () {
-      var wrapperPadding = 0.0333333 * window.innerWidth
-      var bodyPadding = 2 * 0.0111111111 * window.innerWidth
-      document.querySelector('#introduction-wrapper').style.minHeight = (window.innerHeight - bodyPadding - wrapperPadding + (projectCount) * spacePerProject) + 'px'
-    }
-
-    function updateProjectGrid () {
-
-      var projects = Array.prototype.slice.call(document.querySelectorAll('#project-grid .project'))
-
-      document.querySelector('#introduction-wrapper').style.height
-      var newActiveProjectIndex = Math.max(Math.min(Math.floor((document.body.scrollTop + spacePerProject / 2) / spacePerProject), projectCount),0)
-
-      if (activeProjectIndex !== newActiveProjectIndex) {
-
-        activeProjectIndex = newActiveProjectIndex
-
-        projects
-          .filter(function(p, i) {
-            return i === activeProjectIndex
-          })
-          .forEach(function(p) {
-            p.className = 'project'
-          })
-
-        projects
-          .filter(function(p, i) {
-            return i > activeProjectIndex
-          })
-          .forEach(function(p, i) {
-            p.className = 'project inactive bottom'
-          })
-
-        projects
-          .filter(function(p, i) {
-            return i < activeProjectIndex
-          })
-          .forEach(function(p) {
-            p.className = 'project inactive top'
-          })
-
-        document.querySelectorAll('#projects a')
-          .forEach(function(a, i) {
-            a.className = i === activeProjectIndex ? 'active' : ''
-          })
-
-        document.querySelectorAll('#about')
-          .forEach(function(a) {
-            a.className = activeProjectIndex === projects.length - 1 ? 'active' : ''
-          })
-
-        updateBackgroundColor()
+    function updateActiveProject (event) {
+      var pageHeight = document.body.offsetHeight
+      var mouseOffset = !!event.clientY ? window.innerHeight / 2 - event.clientY : 0
+      var scrollTop = document.body.scrollTop - mouseOffset
+      var nodes = Array.prototype.slice.call(document.querySelectorAll('.projects_project'))
+      var scrollRatio = scrollTop / (pageHeight - window.innerHeight)
+      
+      var closestNode = {
+        id: -1,
+        distance: 1000000000
       }
-
-    }
-
-    document.addEventListener("DOMContentLoaded", function(event) {
-      window.addEventListener('resize', resize)
-      document.addEventListener('scroll', updateProjectGrid)
-      resize()
-      updateProjectGrid()
-      // document.querySelector('#body-container').className = ''
-      // window.addEventListener('beforeunload', function() {
-      //   document.querySelector('#body-container').className = 'transition'
-      // })
-    })
-
+      nodes.forEach(function(n, id) {
+        var distance = Math.abs(n.offsetTop - scrollTop - window.innerHeight / 2 + n.offsetHeight / 2)
+        if (distance < closestNode.distance) {
+          closestNode = {
+            id,
+            distance
+          }
+        }
+      })
+      nodes.forEach(function(n, id) {
+        if (id === closestNode.id) {
+          n.className = 'projects_project'
+        } else {
+          n.className = 'projects_project inactive'
+        }
+      })
+    }   
   </script>
-
 </body>

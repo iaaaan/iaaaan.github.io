@@ -34,403 +34,194 @@
 
   <meta charset="utf-8">
   <title>{{page.title}} — Ian Ardouin-Fumat</title>
-
   <link rel="stylesheet" type="text/css" href="{{ site.github.url }}/css/MyFontsWebfontsKit.css">
   <link rel="stylesheet" href="{{ site.github.url }}/css/main.css">
 
-  <style>
-
-    html, body {
-      background-color: #f1f1f1;
-      color: black;
-    }
-
-    p {
-      color: black;
-    }
-
-    a {
-      color: black;
-    }
-
-    a:hover {
-      color: red;
-    }
-
-    h1 {
-      color: black;
-    }
-
-    h2 {
-      color: black;
-    }
-
-    .cta {
-      color: {{ page.background-color }};
-      border: 1px solid {{ page.background-color }};
-    }
-
-      .cta:hover {
-        background-color: {{ page.background-color }};
-        color: {{  page.highlight-color }};
-      }
-
-    #introduction-wrapper {
-      background-color: {{  page.highlight-color }};
-    } 
-
-      #introduction-wrapper {
-        background: linear-gradient(0, {{ page.highlight-color }}, {{ page.shade-color }} 100%);
-      }
-
-      #introduction-wrapper #project-carousel div.item img{
-        box-shadow: 0 0 1.111111111vw rgba(0,0,0,0.2);
-      }
-
-      #introduction-wrapper #project-carousel div.item div.header{
-        background-color: {{ page.background-color }};
-      }
-
-        #introduction-wrapper #project-carousel div.item div.header div.circle {
-          background-color: {{  page.highlight-color }};
-        }
-
-              #project-nav #nav-previous:hover span{
-                border-right-color: {{  page.highlight-color }}; 
-              }
-
-              #project-nav #nav-next:hover span{
-                border-left-color: {{  page.highlight-color }}; 
-              }
-
-          #introduction #project-tags a {
-            color: {{ page.background-color }};
-          }
-
-          #introduction #project-tags a:hover {
-            color: {{ page.content-color }};
-          }
-
-            li.post div.media div.image, li.post div.media iframe {
-              background-color: white;
-              box-shadow: 0 0 1.111111111vw rgba(0,0,0,0.2);
-            }
-
-    #shade {
-      width: 100%;
-      height: 100%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 100;
-      background: linear-gradient(25deg, rgba(0,0,0,0.1), rgba(0,0,0,0.1) 20%, {{ page.shade-color }} 100%);
-      opacity: 0.2;
-    }
-
-    .post-list a {
-      color: {{ page.shade-color }};
-    }
-
-    .post-list a:hover {
-      color: {{ page.highlight-color }};
-    }
-
-
-  </style>
-
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ site.github.url }}/images/favicon-96x96.png" sizes="96x96">
+  
+  <script src="{{ site.github.url }}/js/lazyload.min.js"></script>
+  <script src="{{ site.github.url }}/js/smoothscroll.js"></script>
 </head>
 
-
 <body>
-  <div id="body-container">
-    <div id="introduction-wrapper">
-      <div id="header">
-        <div id="side-bar">
-          <a href="/">
-            <h1 id="logo">
-              Ian Ardouin-Fumat
-            </h1>
-          </a>
-          <div id="project-nav">
-            <a href="{{ site.github.url }}/projects/{{page.previous-project}}">
-              <div class="nav-button" id="nav-previous">
-                <span></span>
-              </div>
-            </a>
-            <a href="{{ site.github.url }}/projects/{{page.next-project}}">
-              <div class="nav-button" id="nav-next">
-                <span></span>
-              </div>
-            </a>
-          </div>
-          <p id="project-meta">
-            {% if page.year %} <span>Date:</span> {{page.year}}<br/>{% endif %}
-            {% if page.for %} <span>For:</span> <a href="{{page.for-link}}">{{page.for}}</a><br/>{% endif %}
-            {% if page.with %} <span>With:</span> <a href="{{page.with-link}}">{{page.with}}</a><br/>{% endif %}
-            {% if page.role %} <span>Role:</span> {{page.role}}<br/>{% endif %}
-            {% if page.press %} 
+  <div class="body" id="overview">
+    <h1 class="small">
+      <span>
+        <a href="{{ site.github.url }}/">
+          Ian Ardouin-Fumat
+        </a>
+      </span>
+      <div class="links">
+        <a href="mailto:ian.ardouin@gmail.com">
+          <img class="button" src="{{ site.github.url }}/images/misc/icon-email.svg">
+        </a>
+        <a href="{{ site.github.url }}/documents/ian-ardouin-resume.pdf">
+          <img class="button" src="{{ site.github.url }}/images/misc/icon-cv.svg">
+        </a>
+      </div>
+    </h1>
+    <div class="overview">
+      <div class="overview_title">
+        <a href="{{ site.github.url }}/projects/{{page.category}}/">
+          <h2 class="overview_title_name">
+            {{ page.title }}
+            <div>
+              <a href="{{ site.github.url }}/">
+                <img class="button" src="{{ site.github.url }}/images/misc/icon-home.svg">
+              </a>
+              <a href="{{ site.github.url }}/projects/{{ page.previous-project }}/">
+                <img class="button" src="{{ site.github.url }}/images/misc/icon-previous.svg">
+              </a>
+              <a href="{{ site.github.url }}/projects/{{ page.next-project }}/">
+                <img class="button" src="{{ site.github.url }}/images/misc/icon-next.svg">
+              </a>
+            </div>
+          </h2>
+        </a>
+        <div class="overview_title_links">
+        </div>
+      </div>
+      <div class="overview_about {% unless page.hasGallery %}padding{% endunless %}">
+        <h3 class="overview_about_section-selector">
+          {% if page.type != "essay" %}
+            <a href="#process"><span class="active">Overview</span> / <span class="inactive">Process</span></a>
+          {% else %}
+            Essay
+          {% endif %}
+        </h3>
+        <h4 class="overview_about_description">
+          {{ page.subtitle | markdownify }}
+          {% if page.description %}
+            {{ page.description | markdownify }}
+          {% endif %}
+        </h4>
+        <div class="overview_about_meta">
+          {% if page.role %}
+            <p class="overview_about_meta_role">
+              {{ page.role }} with <a target="_blank" href="{{ page.with-link }}">{{ page.with }}</a>, for <a target="_blank" href="{{ page.for-link }}">{{ page.for }}</a>.
+            </p>
+          {% endif %}
+          {% if page.press %} 
+            <p>
               <span>Press:</span>
                 {% for outlet in page.press %}
                   {{ outlet }}
                 {% endfor %}
               <br/>
-            {% endif %}
-            {% if page.live-site %} 
-              <div class="cta">
-                <span>Visit Live Site</span>
-              </div>
-            {% endif %} 
-          </p>
-        </div>
-        <div id="introduction">
-          <h2 id="project-title">
-            {{page.title}}
-          </h2>
-          <div id="project-subtitle">
-            {{page.subtitle | markdownify}}
-          </div>
-        </div>
-      </div>
-
-      {% if page.carousel %}
-        <div id="project-carousel-wrapper">
-          <div id="carousel-next-button" class="disabled"><span></span></div>
-          <div id="project-carousel">
-          </div>
-        </div>
-      {% endif %}
-    </div>
-    {% if page.carousel %}
-      <div id="project-carousel-bumper">
-      </div>
-    {% endif %}
-
-    <ul class="post-list">
-      <li class="post" id="index">
-        {% if page.type != "essay" %}
-          <h2 class="post-title">
-            Index
-          </h2>
-          <ul id="index-table">
-            {% for post in site.categories[{{page.category}}] %}
-              <a class="index-link" href="#{{ post.anchor | remove: ' ' }}">
-                <li class="index-post">
-                  <div class="index-post-title">
-                    {{ post.title }}
-                  </div>
-                  <div class="index-post-date">
-                    {{ post.date | date: "%m/%d/%Y" }}
-                  </div>
-                </li>
-              </a>
-            {% endfor %}
-          </ul>
-        {% endif %}
-      </li>
-      {% for post in site.categories[{{page.category}}] %}
-        <li class="post" id="{{ post.anchor | remove: ' ' }}">
-          {% if page.type != "essay" %}
-            <h2 class="post-title">
-              {{ post.title }}
-            </h2>
-            <div class="post-meta">
-              <div class="post-date">{{ post.date | date: "%A, %B %-d, %Y" }}</div>
-            </div>
+            </p>
           {% endif %}
-          <div class="post-content">
-          {{ post.content }}
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-    <div id="footer-nav">
-      <a href="{{ site.github.url }}/projects/{{page.previous-project}}">
-        <div class="nav-button" id="nav-previous">
-          <span></span>
         </div>
-      </a>
-      <a href="/">
-        <div class="nav-button" id="nav-home">
-          <img src="{{ site.github.url }}/images/misc/home-button.svg"/>
-        </div>
-      </a>
-      <a href="{{ site.github.url }}/projects/{{page.next-project}}">
-        <div class="nav-button" id="nav-next">
-          <span></span>
-        </div>
-      </a>
+      </div>
     </div>
+    {% if page.hasGallery %}
+      {% for post in site.categories[{{page.category}}] %}
+        {% if post.type == "overview" %}
+          <div class="overview_gallery">
+            {{ post.content }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
   </div>
+  {% if page.hasPosts %}
+    <div class="body process">
+      <div class="process" id="process">
+        {% if page.type != "essay" %}
+          <div class="process_title">
+            <h2 class="process_title_name">
+              <a href="{{ site.github.url }}/projects/{{page.category}}/">{{ page.title }}</a>
+            </h2>
+            <h3 class="process_title_section-selector">
+              <a href="#overview"><span class="inactive">Overview</span> / <span class="active">Process</span></a>
+            </h3>
+          </div>
+        {% endif %}
+        <div class="process_posts">
+          {% for post in site.categories[{{page.category}}] %}
+            {% if post.type == "process" %}
+              <div class="process_posts_post" id="{{ post.anchor }}">
+                {% if page.type != "essay" %}
+                  <a href="#{{ post.anchor }}">
+                    <div class="process_posts_post_title">
+                      <div class="process_posts_post_title_date">
+                         {{ post.date | date: "%m/%d/%Y" }}
+                      </div>
+                      <h3 class="process_posts_post_title_name">
+                        {{ post.title }}
+                      </h3>
+                    </div>
+                  </a>
+                {% endif %}
+                <div class="process_posts_post_content">
+                  {{ post.content }}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer_title">
+          <a href="/">
+            <h1 class="footer_title_logo">
+              Ian Ardouin-Fumat
+            </h1>
+          </a>
+          <div class="footer_title_links">
+            <a href="mailto:ian.ardouin@gmail.com">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-email-black.svg">
+            </a>
+            <a href="{{ site.github.url }}/documents/ian-ardouin-resume.pdf">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-cv-black.svg">
+            </a>
+          </div>
+        </div>
+        <div class="footer_index">
+          <div>
+            <a href="{{ site.github.url }}/">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-home-black.svg">
+            </a>
+            <a href="{{ site.github.url }}/projects/{{ page.previous-project }}/">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-previous-black.svg">
+            </a>
+            <a href="{{ site.github.url }}/projects/{{ page.next-project }}/">
+              <img class="button" src="{{ site.github.url }}/images/misc/icon-next-black.svg">
+            </a>
+          </div>
+          {% assign years = "2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012" | split: "," %}          
+          {% for y in years %}
+            {% assign emptyYear = 0 %}
+            {% for project in site.projects reversed %}
+              {% assign year = y | plus: 0 %}
+              {% assign projectYear = project.year | split: "-" | last | plus: 0 %}
+              {% if projectYear == year %}
+                {% if emptyYear == 0 %}
+                  <div class="footer_index_project">
+                    {{ year }}:
+                {% endif %}
+                {% assign emptyYear = emptyYear | plus: 1 %}
+                {% if emptyYear > 1 %}
+                  •
+                {% endif %}
+                <a href="{{ site.github.url }}/projects/{{ project.category }}">{{ project.title }}</a>
+              {% endif %}
+            {% endfor %}
+            {% if emptyYear > 0 %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
 
-  <script src="{{ site.github.url }}/js/smoothscroll.js"></script>
   <script>
-
-    var contentImages = document.querySelectorAll('div.post-content img');
-    contentImages.forEach(function(image) {
-      var tempImage = document.createElement('img')
-      tempImage.src = image.src
-      tempImage.addEventListener('load', function(e) {
-        image.style.opacity = 1
-      })
-    })
-
-    var carousel = new Carousel()
-
-    var carouselImagesURL = {{ page.carousel | jsonify }}
-    if (carouselImagesURL.length !== 1 || carouselImagesURL[0].indexOf('player.vimeo.com') === -1) {
-      carouselImagesURL.forEach(function(url, id) {
-        var image = document.createElement('img')
-        image.src = '{{ site.github.url }}/images/' + url
-        if (url.indexOf('-p.') > -1) image.className = 'picture'
-        else image.className = 'screenshot'
-        image.addEventListener('load', function() {
-          carousel.addImage(image, id)
-        })
-      })
-    } else {
-      carousel.addVideo(carouselImagesURL[0])
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-    //   document.querySelector('#body-container').className = ''
-    //   window.addEventListener('beforeunload', function() {
-    //     document.querySelector('#body-container').className = 'transition'
-    //   })
-      initIndex()
-    })
-
-    function initIndex () {
-      document.querySelectorAll('.index-link')
-        .forEach(function(l) {
-          l.addEventListener('click', function(e) {
-            var postIndex = e.target.getAttribute('href')
-            e.preventDefault()
-
-            document.querySelector(postIndex).scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'end'
-            });
-            return false
-          })
-        })
-    }
-
-    function Carousel() {
-
-      var self = this
-      self.node = document.querySelector('#project-carousel')
-      self.width = self.node.clientWidth
-      self.height = 0
-      self.items = []
-      self.currentItemIndex = -1
-      self.interval = null
-      self.intervalDelay = 4000
-
-      self.setCarouselInterval = function (skip) {
-        if (!skip) self.nextItem()
-        window.clearInterval(self.interval)
-        self.interval = window.setInterval(function(){
-          self.nextItem()
-        }, self.intervalDelay)
-      }
-      self.setCarouselInterval(true)
-      self.node.addEventListener('click', function () {
-        self.setCarouselInterval()
-      })
-
-      self.addVideo = function (url) {
-        var itemNode = document.createElement('div')
-        itemNode.className = 'item'
-        self.node.appendChild(itemNode)
-        itemNode.innerHTML = '<iframe class="youtube" src="' + url + '" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>'
-        resizeVideoIFrame()
-      }
-
-      self.addImage = function (image, id) {
-        
-        var tempItems = self.items.slice(0)
-        for (var i = 0; i <= id; i++) {
-          var tempImage = tempItems[i]
-          if (!tempImage || tempImage.id > id) {
-            tempItems.splice(i, 0, {img: image, id: id})
-            break
-          }
-        }
-
-        if (self.items.length != tempItems.length) {
-          self.items = tempItems
-          while (self.node.firstChild) {
-            self.node.removeChild(self.node.firstChild);
-          }
-        }
-
-        self.items.forEach(function (item, i) {
-          var itemNode = document.createElement('div')
-          itemNode.className = 'item'
-          if(i === 0) itemNode.className += ' fade-in'
-          else itemNode.className += ' hidden'
-          self.node.appendChild(itemNode)
-          item.itemNode = itemNode
-          var headerNode = document.createElement('div')
-          headerNode.className = 'header'
-          if (item.img.className.indexOf('picture') === -1) {
-            headerNode.innerHTML = '<div class="circle"></div><div class="circle"></div><div class="circle"></div>'
-            itemNode.appendChild(headerNode)
-          }
-          itemNode.appendChild(item.img)
-          item.headerNode = headerNode
-        })
-
-        self.updateLayout()
-
-      }
-
-      self.updateLayout = function () {
-
-        if (self.items.length > 1) document.querySelector('#carousel-next-button').className = ''
-
-        self.width = self.node.clientWidth
-        self.height = self.node.clientHeight
-
-        self.items.forEach(function (item, i) {
-          if (item.img.width / self.width > item.img.height / self.height) {
-            item.img.style.width = '100%'
-            item.img.style.height = null
-            item.headerNode.style.width = '100%'
-            item.headerNode.style.top = (self.height - item.img.clientHeight) / 2
-            item.headerNode.style.transform = 'translate(-50%, -50%)'
-          } else {
-            item.img.style.height = 'calc(100% - 2.222222222vw)'
-            item.img.style.width = null
-            item.headerNode.style.width = item.img.width
-            item.headerNode.style.top = 0
-            item.headerNode.style.transform = 'translate(-50%, 0)'
-          }
-        })
-
-      }
-
-      self.nextItem = function() {
-        if (self.items.length > 0) {
-          if (self.items.length > 1) {
-            document.querySelector('#carousel-next-button').className = 'active'
-            window.setTimeout(function() {
-              document.querySelector('#carousel-next-button').className = ''
-            },100)
-          }
-          var lastItem = self.items[self.currentItemIndex]
-          self.currentItemIndex = (self.currentItemIndex + 1) % self.items.length
-          var nextItem = self.items[self.currentItemIndex]
-          if (lastItem) lastItem.itemNode.className = 'item fade-out'
-          if (nextItem) nextItem.itemNode.className = 'item fade-in'
-        }
-      }
-
-      return self
-    }
-
     function resizeVideoIFrame () {
       document.querySelectorAll('iframe.youtube').forEach(function(video){
-        var width = video.parentNode.offsetWidth
+        var siblingCount = video.parentNode.childElementCount
+        var width = video.parentNode.offsetWidth - (window.innerWidth > 800 && siblingCount > 1 ? window.innerWidth * 0.0125 * 16 : 0)
         var height = width / (16 / 9)
         video.style.width = width
         video.style.height = height
@@ -438,11 +229,27 @@
     }
     resizeVideoIFrame()
 
-    window.addEventListener('resize', function () {
-      carousel.updateLayout()
-      resizeVideoIFrame()
-    })      
+    function initSectionSelector () {
+      var selectors = Array.prototype.slice.call(document.querySelectorAll('.overview_about_section-selector, .process_title_section-selector '))
+      selectors.forEach(function (s, i) {
+        var link = s.children[0]
+        link.addEventListener('click', function(e) {
+          var postIndex = link.getAttribute('href')
+          e.preventDefault()
+          document.querySelector(postIndex).scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'end'
+          })
+          return false
+        })
+      })
+    }
 
+    window.addEventListener('resize', resizeVideoIFrame);
+    document.addEventListener("DOMContentLoaded", initSectionSelector)
+    var myLazyLoad = new LazyLoad({
+      class_loading: 'loading',
+      class_loaded: 'loaded'
+    });
   </script>
-
 </body>
