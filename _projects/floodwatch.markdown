@@ -1,6 +1,8 @@
 ---
 title:  "Floodwatch"
 subtitle: "How can we claim back the ownership over our online identity when most data systems are designed as black boxes? Floodwatch reverse-engineers targeted advertising by crowdsourcing data collection."
+description: "An extension for Chrome, Floodwatch collects ads served daily to its users, and visualizes them to allow their exploration. By taking part in this experiment, people can find out how their communities are targeted online, and what makes them unique in the eyes of the advertisers."
+
 category: floodwatch
 date:   "2016-10-02 00:00:00 -0500"
 year: 2014-2016
@@ -12,7 +14,6 @@ with-link: "https://ocr.nyc/"
 role: "Design Lead and Frontend Dev Lead"
 hasPosts: true
 hasGallery: true
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis faucibus mauris. Sed justo augue, aliquet lobortis maximus a, dapibus non elit. Etiam quis mi leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique faucibus purus et commodo. Duis dui nulla, pellentesque sit amet odio vitae, imperdiet imperdiet nulla. Nullam quis accumsan dui."
 
 previous-project: elephant-atlas
 next-project: specimen-box

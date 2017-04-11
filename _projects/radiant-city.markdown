@@ -8,7 +8,7 @@ for: "The OCR"
 for-link: "http://ocr.nyc/"
 
 hasPosts: true
-hasGallery: true
+hasGallery: false
 type: "essay"
 
 previous-project: into-the-okavango

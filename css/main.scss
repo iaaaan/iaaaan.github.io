@@ -526,7 +526,22 @@ img.button {
           }
 
           &.xl {
-            width: $line-width * 76;
+            width: $line-width * 75;
+          }
+
+          & .youtube {
+            flex: 1;
+            margin-right: 1px;
+            background-color: lighten($light-gray, 30%);
+            height: auto;
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            & video {
+              width: 100%;
+            }
           }
 
           & .image {
@@ -545,7 +560,7 @@ img.button {
           }
           
           &.s {
-            width: $line-width * 60;
+            width: $line-width * 44;
 
             & .image {
               background-color: transparent !important;
@@ -578,6 +593,13 @@ img.button {
             display: block;
 
             & .image {
+
+              &:not(:last-child) {
+                margin-bottom: $line-height * 2;
+              }
+            }
+
+            & .youtube {
 
               &:not(:last-child) {
                 margin-bottom: $line-height * 2;

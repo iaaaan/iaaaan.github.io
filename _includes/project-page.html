@@ -83,7 +83,7 @@
         <div class="overview_title_links">
         </div>
       </div>
-      <div class="overview_about {% if page.hasGallery %}padding{% endif %}">
+      <div class="overview_about {% unless page.hasGallery %}padding{% endunless %}">
         <h3 class="overview_about_section-selector">
           {% if page.type != "essay" %}
             <a href="#process"><span class="active">Overview</span> / <span class="inactive">Process</span></a>
@@ -94,8 +94,7 @@
         <h4 class="overview_about_description">
           {{ page.subtitle | markdownify }}
           {% if page.description %}
-            <br/><br/>
-            {{ page.description }}
+            {{ page.description | markdownify }}
           {% endif %}
         </h4>
         <div class="overview_about_meta">

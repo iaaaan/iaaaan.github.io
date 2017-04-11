@@ -2,6 +2,8 @@
 title:  "Specimen Box"
 subtitle: "What do botnets tell us when given a voice? Specimen Box is a research tool that lets us explore the personality of those malware networks."
 category: specimen-box
+description: "Microsoft DCU tasked the Office for Creative Research with exploring the organic structures and behaviors uncovered by observing millions of zombie computers. The resulting application is an interactive, audiovisual installation living in Microsoft’s Cybercrime Center."
+
 date:   "2014-02-01 00:00:00 -0500"
 year: 2014
 for: "Microsoft Cybercrime Unit"
@@ -12,7 +14,6 @@ with-link: "https://ocr.nyc/"
 role: "Design Lead and Processing Dev Lead"
 hasPosts: true
 hasGallery: true
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis faucibus mauris. Sed justo augue, aliquet lobortis maximus a, dapibus non elit. Etiam quis mi leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique faucibus purus et commodo. Duis dui nulla, pellentesque sit amet odio vitae, imperdiet imperdiet nulla. Nullam quis accumsan dui."
 
 previous-project: floodwatch
 next-project: into-the-okavango

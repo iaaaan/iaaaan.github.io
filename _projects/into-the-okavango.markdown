@@ -1,6 +1,8 @@
 ---
 title:  "Into the Okavango"
 subtitle: "Can we make open science accessible beyond academia? Into the Okavango turns a field expedition in Botswana into an immersive online experience and a user-friendly API."
+description: "Partnering with ornithologist Dr. Steve Boyes, the Office for Creative Research developed a technology suite enabling the live collect, processing and visualization of thousands of data records from the field."
+
 category: into-the-okavango
 date:   "2016-12-02 14:54:00 -0500"
 year: 2014-2016
@@ -12,7 +14,6 @@ for-link: "http://www.nationalgeographic.com/"
 role: "Design Lead and Frontend Dev Lead"
 hasPosts: true
 hasGallery: true
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis faucibus mauris. Sed justo augue, aliquet lobortis maximus a, dapibus non elit. Etiam quis mi leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique faucibus purus et commodo. Duis dui nulla, pellentesque sit amet odio vitae, imperdiet imperdiet nulla. Nullam quis accumsan dui."
 
 previous-project: specimen-box
 next-project: radiant-city

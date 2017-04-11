@@ -1,6 +1,8 @@
 ---
 title:  "Elephant Atlas"
-subtitle: "There is no silver-bullet solution for saving elephants from decline. How can data visualization provide tools for people to engage in this complex political issue?"
+subtitle: "Elephant populations are declining dramatically in most African countries. Can data visualization provide tools for addressing this issue, given the complex scientific and socio-economic background involved in wildlife conservation?"
+description: "As part of the Great Elephant Census, the Office for Creative Research created an online visualization platform exploring the many factors behind the loss of elephant populations. With this project, it contributed to the [shutting down of the Chinese ivory market](http://news.nationalgeographic.com/2016/12/wildlife-watch-china-legal-ivory-market-african-elephants/) in 2017."
+
 category: elephant-atlas
 date:   "2016-10-02 19:13:40 +0200"
 year: 2016
@@ -12,7 +14,6 @@ with-link: "https://ocr.nyc/"
 role: "Project and Design Lead"
 hasPosts: true
 hasGallery: true
-description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis faucibus mauris. Sed justo augue, aliquet lobortis maximus a, dapibus non elit. Etiam quis mi leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer tristique faucibus purus et commodo. Duis dui nulla, pellentesque sit amet odio vitae, imperdiet imperdiet nulla. Nullam quis accumsan dui."
 
 previous-project: radiant-city
 next-project: floodwatch
