@@ -6,8 +6,7 @@ $line-height: 18px;
 $font-body: 16px;
 $font-headline: 26px;
 $black: #000000;
-$dark-gray: #555555;
-$gray: #848484;
+$dark-gray: #666666;
 $light-gray: #AAAAAA;
 $white: #ffffff;
 
@@ -137,7 +136,7 @@ td {
 img.button {
   display: inline-block;
   vertical-align: middle;
-  opacity: 0.3;
+  opacity: 0.5;
   transition: opacity 0.15s;
   cursor: pointer;
   margin-right: $line-width / 2;
