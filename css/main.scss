@@ -15,6 +15,10 @@ $white: #ffffff;
   @media (max-width: 800px) { @content; }
 }
 
+@mixin laptop-up {
+  @media (min-width: 1440px) { @content; }
+}
+
 html, body {
   font-size: $font-body;
   line-height: $line-height * 1.5;
@@ -144,7 +148,7 @@ img.button {
 }
 
 .body {
-  padding: $line-height * 4 $line-height * 2 0 $line-height * 2;
+  padding: $line-height * 4 $line-width * 2 0 $line-width * 2;
   padding-bottom: 0;
   position: relative;
   z-index: 1;
@@ -154,6 +158,11 @@ img.button {
     background-color: $white;
     color: black;
     z-index: 0;
+  }
+
+  @include laptop-up {
+    padding-left: calc(50vw - 684px);
+    padding-right: calc(50vw - 684px);
   }
 }
 
@@ -170,6 +179,11 @@ img.button {
     flex-basis: $line-width * 12;
     margin-right: $line-width * 4;
 
+    @include laptop-up {
+      max-width: 216px;
+      margin-right: 72px;
+    }
+
     @include tablet-portrait-down {
       margin-bottom: $line-height * 2;
     }
@@ -177,6 +191,10 @@ img.button {
 
   &_bio {
     flex-basis: $line-width * 20;
+
+    @include laptop-up {
+      flex-basis: 360px;
+    }
   }
 }
 
@@ -195,6 +213,11 @@ img.button {
     &_title {
       flex-basis: $line-width * 12;
       margin-right: $line-width * 4;
+
+      @include laptop-up {
+        flex-basis: 216px;
+        margin-right: 72px;
+      }
 
       & h2 {
         @include tablet-portrait-down {
@@ -219,10 +242,19 @@ img.button {
       @include tablet-portrait-down {
         margin-bottom: $line-height * 2;
       }
+
+      @include laptop-up {
+        flex-basis: 360px;
+        margin-right: 72px;
+      }
     }
 
     &_image {
       flex-basis: $line-width * 36;
+
+      @include laptop-up {
+        flex-basis: 648px;
+      }
 
       & img {
         display: block;
@@ -254,6 +286,11 @@ img.button {
     flex-basis: $line-width * 12;
     margin-right: $line-width * 4;
 
+    @include laptop-up {
+      flex-basis: 216px;
+      margin-right: 72px;
+    }
+
     @include tablet-portrait-down {
       margin-bottom: $line-height * 3;
     }
@@ -261,6 +298,10 @@ img.button {
 
   &_about {
     flex-basis: $line-width * 60;
+
+    @include laptop-up {
+      flex-basis: 1080px;
+    }
 
     &.padding {
       padding-bottom: 4 * $line-height;
@@ -347,6 +388,10 @@ img.button {
       &:last-child {
         padding-bottom: $line-width * 4;
       }
+
+      @include laptop-up {
+        padding-right: 324px;
+      }
     }
 
     & .columns {
@@ -387,10 +432,19 @@ img.button {
     &_name {
       flex-basis: $line-width * 12;
       margin-right: $line-width * 4;
+
+      @include laptop-up {
+        flex-basis: 216px;
+        margin-right: 72px;
+      }
     }
 
     &_section-selector {
       flex-basis: $line-width * 44;
+
+      @include laptop-up {
+        flex-basis: 792px;
+      }
 
       @include tablet-portrait-down {
         font-size: $font-body;
@@ -434,6 +488,10 @@ img.button {
         width: $line-width * 60;
         margin-bottom: $line-height  * 2;
 
+        @include laptop-up {
+          flex-basis: 1080px;
+        }
+
         @include tablet-portrait-down {
           display: block;
         }
@@ -442,17 +500,31 @@ img.button {
           flex-basis: $line-width * 12;
           margin-right: $line-width * 4;
           color: $light-gray;
+
+          @include laptop-up {
+            flex-basis: 216px;
+            margin-right: 72px;
+          }
         }
 
         &_name {
           flex-basis: $line-width * 44;
           color: $black !important;
+
+          @include laptop-up {
+            flex-basis: 792px;
+          }
         }
       }
 
       &_content {
         padding-left: $line-width * 16;
         width: $line-width * 44;
+
+        @include laptop-up {
+          padding-left: 288px;
+          width: 792px;
+        }
 
         @include tablet-portrait-down {
           padding: 0;
@@ -494,6 +566,7 @@ img.button {
 
             & div {
               flex: 1;
+
               @include tablet-portrait-down {
                 margin-bottom: $line-height * 2;
               }
@@ -515,15 +588,26 @@ img.button {
 
           &.off {
             margin-left: -$line-width * 16;
-          }
 
+            @include laptop-up {
+              margin-left: -288px;
+            }
+          }
 
           &.l {
             width: $line-width * 60;
+
+            @include laptop-up {
+              width: 1080px;
+            }
           }
 
           &.xl {
             width: $line-width * 75;
+
+            @include laptop-up {
+              width: 1350px;
+            }
           }
 
           & .youtube {
@@ -559,6 +643,10 @@ img.button {
           &.s {
             width: $line-width * 44;
 
+            @include laptop-up {
+              width: 792px;
+            }
+
             & .image {
               background-color: transparent !important;
 
@@ -576,12 +664,21 @@ img.button {
             flex-shrink: 0;
             color: $light-gray;
 
+            @include laptop-up {
+              width: 216px;
+              padding-right: 72px;
+            }
+
             @include tablet-portrait-down {
               width: $line-width * 76;
               padding-right: 0;
               margin-bottom: $line-height;
               text-align: center;
             }
+          }
+
+          @include laptop-up {
+            width: 792px;
           }
 
           @include tablet-portrait-down {
@@ -627,6 +724,11 @@ img.button {
     flex-basis: $line-width * 12;
     margin-right: $line-width * 4;
 
+    @include laptop-up {
+      max-width: 216px;
+      margin-right: 72px;
+    }
+
     @include tablet-portrait-down {
       margin-bottom: $line-height * 2;
     }
@@ -635,6 +737,10 @@ img.button {
   &_index {
     flex-basis: $line-width * 44;
     color: $light-gray;
+
+    @include laptop-up {
+      flex-basis: 792px;
+    }
 
     & a {
       color: $light-gray;
