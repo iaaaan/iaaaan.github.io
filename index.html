@@ -87,7 +87,7 @@ layout: default
               </h3>
             </div>
             <div class="projects_project_subtitle">
-              {{ project.subtitle | markdownify }}
+              {{ project.subtitle | markdownify | strip_html }}
             </div>
             <div class="projects_project_image">
               <img src="{{ site.github.url }}/images/{{project.category}}/homepage/homepage.jpg"/>
