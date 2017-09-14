@@ -176,6 +176,7 @@ layout: default
     document.addEventListener("DOMContentLoaded", updateActiveProject)
     document.addEventListener('scroll', updateActiveProject)
     document.addEventListener('mousemove', updateActiveProject)
+    
     window.addEventListener('resize', function () {
       camera.aspect = window.innerWidth / window.innerHeight
       camera.updateProjectionMatrix()
@@ -190,10 +191,20 @@ layout: default
     })
 
     var lastY = 0
-    document.addEventListener('touchmove', function (e){
-     var currentY = e.originalEvent.touches[0].clientY
-     animateBackground(currentY - lastY)
+    document.addEventListener('touchstart', function (e){
+     var currentY = e.touches[0].clientY
      lastY = currentY
+    })
+
+    document.addEventListener('touchmove', function (e){
+     var currentY = e.touches[0].clientY
+     var delta = currentY - lastY
+     animateBackground(-delta)
+     lastY = currentY
+    })
+
+    document.addEventListener('touchend', function (e){
+     lastY = 0
     })
 
     function animateBackground (delta) {
