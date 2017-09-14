@@ -167,7 +167,7 @@ img.button {
 
 .about {
   display: flex;
-  border-bottom: 1px solid darken($dark-gray,33%);
+  border-bottom: 1px solid darken($dark-gray,30%);
   padding-bottom: $line-height * 4;
 
   @include tablet-portrait-down {
@@ -211,7 +211,7 @@ img.button {
   &_project {
     display: flex;
     padding: $line-height * 4 0;
-    border-bottom: 1px solid darken($dark-gray,33%);
+    border-bottom: 1px solid darken($dark-gray,30%);
     transition: opacity 0.3s;
 
     @include tablet-portrait-down {

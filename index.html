@@ -189,6 +189,13 @@ layout: default
       return false
     })
 
+    var lastY = 0
+    document.addEventListener('touchmove', function (e){
+     var currentY = e.originalEvent.touches[0].clientY
+     animateBackground(currentY - lastY)
+     lastY = currentY
+    })
+
     function animateBackground (delta) {
       if (
         (delta < 0 && document.body.scrollTop > 0) || 
