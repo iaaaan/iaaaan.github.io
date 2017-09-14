@@ -11,7 +11,7 @@ $light-gray: #AAAAAA;
 $white: #ffffff;
 
 @mixin tablet-portrait-down {
-  @media (max-width: 960px) { @content; }
+  @media (max-width: 800px) { @content; }
 }
 
 @mixin laptop-up {
