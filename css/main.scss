@@ -167,7 +167,7 @@ img.button {
 
 .about {
   display: flex;
-  border-bottom: 1px solid darken($dark-gray,20%);
+  border-bottom: 1px solid darken($dark-gray,33%);
   padding-bottom: $line-height * 4;
 
   @include tablet-portrait-down {
@@ -194,6 +194,15 @@ img.button {
     @include laptop-up {
       flex-basis: 360px;
     }
+
+    &_cta {
+      color: $light-gray;
+      transition: color 0.15s;
+      
+      &:hover {
+        color: $white;
+      }
+    }
   }
 }
 
@@ -202,7 +211,7 @@ img.button {
   &_project {
     display: flex;
     padding: $line-height * 4 0;
-    border-bottom: 1px solid darken($dark-gray,20%);
+    border-bottom: 1px solid darken($dark-gray,33%);
     transition: opacity 0.3s;
 
     @include tablet-portrait-down {
@@ -770,6 +779,11 @@ img.button {
   }
 }
 
+#background {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+}
 
 
 

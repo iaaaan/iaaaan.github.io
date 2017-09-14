@@ -48,6 +48,7 @@ layout: default
 </head>
 
 <body>
+  <div id="background"></div>
   <div class="body">
     <div class="about">
       <div class="about_title">
@@ -67,10 +68,12 @@ layout: default
       </div>
       <div class="about_bio">
         <p>
-          Trained as an interaction designer in France, I've practiced creative coding and critical thinking around technology since 2012. My work revolves around the intersection of data and civil rights, information security, environmental conservation, and the art world.
+          Trained as an interaction designer in France, I've practiced creative coding and critical thinking around technology since 2012. My work revolves around the intersection of data and human rights, information security, environmental conservation, and the art world.
         </p>
         <p>
-          These days, I am exploring how peer-to-peer technologies can foster people's digital agency.
+          Need some data visualization work done?
+          <br/>
+          <a href="mailto:ian.ardouin@gmail.com" class="about_bio_cta">Drop me a line!</a>
         </p>
       </div>
     </div>
@@ -141,14 +144,59 @@ layout: default
     </div>
   </div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
+
   <script>
+
+    var scene, camera, renderer
+    var geometry, material, geometry, particles
+    scene = new THREE.Scene()
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 25, 10000 )
+    camera.position.z = 800
+    geometry = new THREE.Geometry()
+    for ( i = 0; i < 12000; i ++ ) {
+      var vertex = new THREE.Vector3()
+      vertex.x = Math.random() * 2000 - 1000
+      vertex.y = Math.random() * 2000 - 1000
+      vertex.z = Math.random() * 2000 - 1000
+      geometry.vertices.push(vertex)
+    }
+    material = new THREE.PointsMaterial({ color: 0x555555 })
+    particles = new THREE.Points(geometry, material)
+    scene.add(particles)
+    renderer = new THREE.WebGLRenderer({antialias: true})
+    renderer.setSize( window.innerWidth, window.innerHeight )
+    document.querySelector('#background').appendChild( renderer.domElement )
+    renderer.render( scene, camera )
+
     var activeProjectID = 0
     var projectCount = {{ site.projects | size | jsonify }}
-    
+
     document.addEventListener("DOMContentLoaded", updateActiveProject)
     document.addEventListener('scroll', updateActiveProject)
     document.addEventListener('mousemove', updateActiveProject)
-    document.addEventListener('resize', updateActiveProject)
+    window.addEventListener('resize', function () {
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize( window.innerWidth, window.innerHeight )
+      renderer.render( scene, camera )
+      updateActiveProject()
+    })
+
+    document.addEventListener('mousewheel', function(e){
+      animateBackground(e.deltaY)
+      return false
+    })
+
+    function animateBackground (delta) {
+      if (
+        (delta < 0 && document.body.scrollTop > 0) || 
+        (delta > 0 && document.body.scrollTop + window.innerHeight < document.body.clientHeight)
+      ) {
+        particles.rotation.x -= delta / 3000
+        renderer.render( scene, camera )
+      }
+    }
 
     function updateActiveProject (event) {
       var pageHeight = document.body.offsetHeight
