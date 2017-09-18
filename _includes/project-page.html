@@ -85,10 +85,12 @@
       </div>
       <div class="overview_about {% unless page.hasGallery %}padding{% endunless %}">
         <h3 class="overview_about_section-selector">
-          {% if page.type != "essay" %}
-            <a href="#process"><span class="active">Overview</span> / <span class="inactive">Process</span></a>
-          {% else %}
+          {% if page.type == "essay"%}
             Essay
+          {% elsif page.type == "talks"%}
+            <div style="margin-top: -36px"></div>
+          {% else %}
+            <a href="#process"><span class="active">Overview</span> / <span class="inactive">Process</span></a>
           {% endif %}
         </h3>
         <h4 class="overview_about_description">
@@ -128,7 +130,7 @@
   {% if page.hasPosts %}
     <div class="body process">
       <div class="process" id="process">
-        {% if page.type != "essay" %}
+        {% if page.type != "essay" and page.type != "talks" %}
           <div class="process_title">
             <h2 class="process_title_name">
               <a href="{{ site.github.url }}/projects/{{page.category}}/">{{ page.title }}</a>

@@ -15,7 +15,7 @@ role: "Design Lead and Frontend Dev Lead"
 hasPosts: true
 hasGallery: true
 
-previous-project: specimen-box
+previous-project: talks
 next-project: radiant-city
 press: <a target='_blank' href='https://www.theguardian.com/environment/radical-conservation/2015/may/28/expedition-source-okavango-delta'>The Guardian</a>, <a target='_blank' href='http://news.nationalgeographic.com/2015/05/150527-okavango-wilderness-project-delta-africa-wetland/'>National Geographic</a>, <a target='_blank' href='http://theterramarproject.org/thedailycatch/the-internet-of-earth-things-engineering-into-the-okavango/'>The Terramar Project</a>
 ---

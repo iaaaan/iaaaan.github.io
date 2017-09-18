@@ -16,7 +16,7 @@ hasPosts: true
 hasGallery: true
 
 previous-project: floodwatch
-next-project: into-the-okavango
+next-project: c2-brain
 press: <a target='_blank' href='https://www.wired.com/2014/12/sci-fi-worthy-interface-tracking-criminal-botnets/'>Wired</a>
 ---
 

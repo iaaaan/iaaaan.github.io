@@ -603,7 +603,7 @@ img.button {
           }
 
           &.l {
-            width: $line-width * 60;
+            width: $line-width * 59;
 
             @include laptop-up {
               width: 1080px;
@@ -785,6 +785,10 @@ img.button {
   position: fixed;
 }
 
+.photo-credit {
+  color: $dark-gray;
+  margin-bottom: $line-width;
+}
 
 
 
