@@ -206,9 +206,11 @@ layout: default
     })
 
     function animateBackground (delta) {
+      var doc = document.documentElement
+      var scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
       if (
-        (delta < 0 && document.body.scrollTop > 0) || 
-        (delta > 0 && document.body.scrollTop + window.innerHeight < document.body.clientHeight)
+        (delta < 0 && scrollTop > 0) || 
+        (delta > 0 && scrollTop + window.innerHeight < document.body.clientHeight)
       ) {
         particles.rotation.x -= delta / 3000
         renderer.render( scene, camera )
@@ -218,7 +220,8 @@ layout: default
     function updateActiveProject (event) {
       var pageHeight = document.body.offsetHeight
       var mouseOffset = !!event.clientY ? window.innerHeight / 2 - event.clientY : 0
-      var scrollTop = document.body.scrollTop - mouseOffset
+      var doc = document.documentElement
+      var scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
       var nodes = Array.prototype.slice.call(document.querySelectorAll('.projects_project'))
       var scrollRatio = scrollTop / (pageHeight - window.innerHeight)
       
