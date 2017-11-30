@@ -13,7 +13,7 @@ role: "Data Visualization Lead"
 hasPosts: true
 hasGallery: true
 
-previous-project: specimen-box
+previous-project: into-the-okavango
 next-project: talks
 ---
 

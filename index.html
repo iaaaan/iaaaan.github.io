@@ -172,7 +172,10 @@ layout: default
     var projectCount = {{ site.projects | size | jsonify }}
 
     document.addEventListener("DOMContentLoaded", updateActiveProject)
-    document.addEventListener('scroll', updateActiveProject)
+    document.addEventListener('scroll', function(e) {
+      animateBackground(e.deltaY)
+      updateActiveProject(e)
+    })
     document.addEventListener('mousemove', updateActiveProject)
     
     window.addEventListener('resize', function () {
@@ -183,10 +186,10 @@ layout: default
       updateActiveProject()
     })
 
-    document.addEventListener('mousewheel', function(e){
-      animateBackground(e.deltaY)
-      return false
-    })
+    // document.addEventListener('mousewheel', function(e){
+    //   animateBackground(e.deltaY)
+    //   return false
+    // })
 
     var lastY = 0
     document.addEventListener('touchstart', function (e){
@@ -195,19 +198,21 @@ layout: default
     })
 
     document.addEventListener('touchmove', function (e){
-     var currentY = e.touches[0].clientY
-     var delta = currentY - lastY
-     animateBackground(-delta)
-     lastY = currentY
+      var currentY = e.touches[0].clientY
+      var delta = currentY - lastY
+      animateBackground(-delta)
+      lastY = currentY
     })
 
     document.addEventListener('touchend', function (e){
      lastY = 0
     })
 
-    function animateBackground (delta) {
+    var lastScrollTop = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0)
+    function animateBackground () {
       var doc = document.documentElement
       var scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+      var delta = scrollTop - lastScrollTop
       if (
         (delta < 0 && scrollTop > 0) || 
         (delta > 0 && scrollTop + window.innerHeight < document.body.clientHeight)
@@ -215,6 +220,7 @@ layout: default
         particles.rotation.x -= delta / 3000
         renderer.render( scene, camera )
       }
+      lastScrollTop = scrollTop
     }
 
     function updateActiveProject (event) {
