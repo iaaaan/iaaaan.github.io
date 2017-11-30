@@ -15,8 +15,8 @@ role: "Project and Design Lead"
 hasPosts: true
 hasGallery: true
 
-previous-project: radiant-city
-next-project: floodwatch
+previous-project: talks
+next-project: radiant-city
 press: <a target='_blank' href='http://www.cnn.com/2016/08/31/africa/great-elephant-census/'>CNN</a>, <a target='_blank' href='https://www.washingtonpost.com/news/worldviews/wp/2016/08/31/the-largest-ever-survey-of-elephants-in-africa-reveals-startling-declines/'>Washington Post</a>, <a target='_blank' href='https://www.theguardian.com/environment/2016/aug/31/poaching-drives-huge-30-decline-in-africas-savannah-elephants'>The Guardian</a>, <a target='_blank' href='http://news.nationalgeographic.com/2016/08/wildlife-african-elephants-population-decrease-great-elephant-census/'>National Geographic</a>
 ---
 

@@ -9,7 +9,7 @@ hasGallery: false
 type: "talks"
 
 previous-project: c2-brain
-next-project: into-the-okavango
+next-project: elephant-atlas
 ---
 
 {% include project-page.html %}
