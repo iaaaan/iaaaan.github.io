@@ -548,6 +548,10 @@ img.button {
           text-decoration: underline;
         }
 
+        & .label {
+          color: $light-gray;
+        }
+
         & .media {
           display: flex;
           margin-bottom: $line-height  * 4;
@@ -836,7 +840,7 @@ img.button {
 
 li:not(.checklist) {
   margin-bottom: $line-height;
-  list-style: decimal-leading-zero;
+  list-style: decimal;
   margin-left: $line-width;
   padding-left: $line-width;
 }
