@@ -1,6 +1,6 @@
 ---
 title:  "C2 Brain"
-subtitle: "I joined the New School's [Center for Data Arts](http://www.data-arts.nyc/) to visualize the depth and breadth of conversations that took place at one of the world's most eclectic business conferences."
+subtitle: "I joined the The New School's [Center for Data Arts](http://www.data-arts.nyc/) to visualize the depth and breadth of conversations that took place at one of the world's most eclectic business conferences."
 description: "Together, we put together a physical installation and a 3-day live-coding performance to transcribe the substance of C2 Montreal."
 category: c2-brain
 date:   "2017-05-25 14:54:00 -0500"

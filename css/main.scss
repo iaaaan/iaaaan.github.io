@@ -155,7 +155,7 @@ img.button {
   &.process {
     padding-top: $line-height * 2;
     background-color: $white;
-    color: black;
+    color: $black;
     z-index: 0;
   }
 
@@ -291,6 +291,7 @@ img.button {
   }
 
   &_title {
+    text-transform: capitalize;
     flex-basis: $line-width * 12;
     margin-right: $line-width * 4;
 
@@ -427,6 +428,10 @@ img.button {
 
 .process {
   padding-top: $line-height * 2;
+
+  h3 {
+    margin-bottom: $line-height
+  }
 
   &_title {
     display: flex;
@@ -570,6 +575,23 @@ img.button {
             } 
           }
 
+          & .explainer {
+            background-color: white;
+            padding-top: $line-height * 2;
+            margin-bottom: $line-height * 2;
+
+            h4 {
+              font-size: $font-body;
+              line-height: $font-headline;
+              color: $light-gray;
+              text-transform: capitalize;
+            }
+
+            p {
+              padding-right: $line-width * 2;
+            }
+          }
+
           &.table {
 
             & div {
@@ -638,6 +660,10 @@ img.button {
             margin-right: 1px;
             background-color: lighten($light-gray, 30%);
             height: auto;
+
+            &.border {
+              border: 1px solid #ddd;
+            }
 
             &:last-child {
               margin-right: 0;
@@ -790,8 +816,22 @@ img.button {
   margin-bottom: $line-width;
 }
 
+.checklist {
+  h4 {
+    color: $black;
 
+    img {
+      vertical-align: sub;
+    }
+  }
 
+  .track {
+    margin-bottom: $line-height;
+  }
 
+  li li {
+    margin-left: $line-width;
+  }
+}
 
 

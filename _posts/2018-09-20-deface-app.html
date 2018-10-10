@@ -1,0 +1,35 @@
+---
+title: "How does it work?"
+date: 2018-09-20 00:00:00 -0500
+categories: deface
+anchor: app
+type: process
+---
+
+<p>
+  Deface augments Facebook's interface with a single feature: encrypted timeline posts. When enabled, Deface captures and encrypts messages as they are written, right before they are posted to Facebook's servers. Deface turns content into garbled strings of characters, and makes people's communications unreadable by Facebook and third party organizations, including advertisers, government agencies, and malicious actors. Under the hood, the application stores encryptions keys in a decentralized database shared by all users.
+</p>
+
+<div class="media xl off">
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/deface/app/deface-general-diagram.png" width="1640" height="764"/>
+  </div>
+</div>
+
+<p>
+  This layer of protection comes at a minimal cost in terms of user experience:
+</p>
+
+<ul>
+  <li>
+    First, encrypted messages can only be read on devices where Deface is installed. This means that people who don't have access to Deface will not be able to read content posted by their friends. This could potentially break people's experience of Facebook, which is why we will always leave the option to post unencrypted messages available to all. Additionally, a link to download Deface appears at the bottom of every encrypted message, which we hope will drive user adoption.
+  </li>
+
+  <li>
+    Second, in order to protect people's content from bots and algorithms, the peer-to-peer network underlying the application enforces a verification system based on ReCaptcha. This assures that only humans can access content, at the cost of users having to solve captcha puzzles every once in a while.
+  </li>
+</ul>
+
+<p>
+  It is critical to understand that Deface doesn't provide bulletproof encryption of the sort offered by tools like Signal or PGP. All it takes for a malicious actor to read someone's Deface messages is to install the app, and become Facebook friends with them. What Deface provides is protection from algorithms that sweep through millions of messages at once. In other words, Deface doesn't make any assumption as to who should access anyone's content, it only enforces a "humans only, no algorithm" policy. The purpose of Deface is to raise the cost of mass surveillance by providing soft encryption to wide audiences.
+</p>
