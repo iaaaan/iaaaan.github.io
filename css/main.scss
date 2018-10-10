@@ -505,7 +505,7 @@ img.button {
     &_post {
       margin-top: $line-height * 5;
       padding-bottom: $line-height * 5;
-      border-bottom: 1px solid lighten($light-gray, 20%);
+      border-bottom: 1px solid $light-gray;
 
       &_title {
         display: flex;
