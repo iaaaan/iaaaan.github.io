@@ -834,4 +834,10 @@ img.button {
   }
 }
 
+li:not(.checklist) {
+  margin-bottom: 25px;
+  list-style: decimal-leading-zero;
+  margin-left: 25px;
+  padding-left: 25px;
+}
 
