@@ -391,6 +391,11 @@ img.button {
     margin-bottom: -$line-height * 2;
     background-color: $black;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    border: 1px solid #222;
+
+    iframe {
+      border-right: 1px solid #222;
+    }
 
     & img {
       flex: 1;
