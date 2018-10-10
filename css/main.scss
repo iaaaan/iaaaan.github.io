@@ -111,6 +111,17 @@ h4 {
   color: $white;
 }
 
+h5 {
+  
+
+  font-size: $font-headline;
+  line-height: $line-height * 2;
+  margin-top: 0;
+  margin-bottom: $line-height * 2;
+  font-weight: normal;
+  color: $dark-gray;
+}
+
 img:not([src]) {
     visibility: hidden;
 }
@@ -584,11 +595,12 @@ img.button {
             padding-top: $line-height * 2;
             margin-bottom: $line-height * 2;
 
-            h4 {
+            .label {
               font-size: $font-body;
               line-height: $font-headline;
-              color: $light-gray;
+              color: $dark-gray;
               text-transform: capitalize;
+              margin-bottom: $line-height;
             }
 
             p {

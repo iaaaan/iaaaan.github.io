@@ -14,6 +14,10 @@ type: process
   To this day, Deface's architecture is still a work in progress, but it has come a long way since its initial protype in 2015. Initially build as a centralized, symmetric encryption system (yikes), Deface quickly shaped up to become distributed. I explored a number of technical solutions, including asymmetric encryption program <a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy" target="_blank">PGP</a> and mesh network protocol <a href="http://telehash.org/" target="_blank">Telehash</a>, before realizing a Distributed Hash Table (DHT) was the kind of system I was looking for. 
 </p>
 
+<h5>
+  Distributed Hash Tables, a crash course
+</h5>
+
 <p>
   A DHT can be described as a decentralized database in which each user manages a small segment of the full data set. DHTs have been around for a while, as they have been in use in many file-sharing services — think Napster or BitTorrent — over the course of several decades. Only recently, however, have they become a tool for web applications, thanks to the progress made on Libp2p's javascript implementation based on WebRTC. In Deface's instance, a DHT is useful for storing the encryption keys to each message, as it provides a system that doesn't have a single point of failure (e.i. <a href="https://www.theguardian.com/commentisfree/2014/may/20/why-did-lavabit-shut-down-snowden-email" target="_blank">the FBI cannot force us to compromise the service</a>) and operates with limited resources on the admin's end. 
 </p>
@@ -26,9 +30,9 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-1.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         1. uniform id space
-      </h4>
+      </p>
       <p>
         To organize data, a DHT assigns addresses to both users (nodes) and data within a uniform index space: every node and data points has its own id ranging from 0 to n (15 in the diagram above). In Kademlia DHT, users and content are distributed within this space to form a binary tree structure, which facilitates finding which node carries which piece of information.
       </p>
@@ -37,9 +41,9 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-2.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         2. routing table
-      </h4>
+      </p>
       <p>
         This organizing principle enables each node to maintain a routing table (i.e a peer directory) that acts as a map for looking up nodes and data. Every node has knowledge of a few peers in the DHT, but this knowledge combined with those of others is sufficient to store and access data all over the network.
       </p>
@@ -48,9 +52,9 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-3.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         3. communications
-      </h4>
+      </p>
       <p>
         Once connected together, peers can start storing and querying content within the distributed hash table. In the case of Deface, this means users can push newly generated encryption keys, and request those of other people. Nodes route 'put' and 'get' requests throughout the network until they reach the address they are targeting.
       </p>
@@ -64,7 +68,11 @@ type: process
   </div>
   <iframe class="youtube" src="https://www.youtube.com/embed/w9UObz8o8lY" frameborder="0" allowfullscreen></iframe>
 </div>
-  
+
+<h5>
+  Deface's very own distributed database
+</h5>
+
 <p>
   Over the course of three years, I played around with several implementations of Kademlia DHT with little success, and ended up finding out about <a href="https://www.ipfs.io/" target="_blank">IPFS</a> and its networking stack full or promises: <a href="https://libp2p.io/" target="_blank">Libp2p</a>. A couple years later, Libp2p's DHT implementation had reached a stage I could start working with, which led me to spend a year experimenting with it. Here again the process involved trial and error. I initially relied on libp2p's content routing system, until I realized tapping directly into its DHT tools would help with content distribution and verification (besides, Deface's data is so small it easily fits in a DHT's key/value system). I then designed a system where each node constantly monitored a few others, but quickly found this scheme had critical security flaws. I ended up customizing libp2p-kad-dht with my own features, including append-only logs, a peer verification method, and a more selective ping system. 
 </p>
@@ -77,9 +85,9 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-4.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         4. need for verification
-      </h4>
+      </p>
       <p>
         In order to prevent Facebook and other undesirable actors from sucking all the content out of the database, every node in the network must verify the good standing of peers they share content with. The system must also monitor each node's activity, to prevent them from querying unreasonable amounts of information.
       </p>
@@ -88,9 +96,9 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-5.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         5. every user verify themselves before posting requests
-      </h4>
+      </p>
       <p>
         To tackle this, Deface users solve ReCaptcha puzzles and store the resulting verification tokens locally. Then, any content request from them are prefaced by posting a record to the DHT that contains two identifiers: one for their verification token, and another one for the current request.
       </p>
@@ -99,9 +107,9 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-6.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         6. content providers check for verification
-      </h4>
+      </p>
       <p>
         In order to verify the requesting node's identity, data-holding peers seek the request log at the address it was pushed during step 5, and check two things: whether the verification token's signature matches, and that the user has not sent too many requests using to this token. This whole mechanism makes sure nodes are not abusing the database with an unreasonable amount of queries.
       </p>
@@ -113,9 +121,9 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-7.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         7. not everyone should be allowed to store content
-      </h4>
+      </p>
       <p>
         Another concern of Deface is to avoid trusting non-participating peers with data storage, since malicious actors could simply launch a bunch of nodes and end up having passive access to a large portion of the data records.
       </p>
@@ -124,9 +132,9 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-8.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         8. DHT ping
-      </h4>
+      </p>
       <p>
         This is addressed during the process of refreshing one's peer list, called pinging. When a node discovers a new peer, they ping a portion of their routing table and filter out the contacts that have provided the oldest verification tokens. This enables the network to organically weed out connections with peers that are not a legitimate part of the community.
       </p>
@@ -135,15 +143,19 @@ type: process
   <div class="image" style="background-color:white;">
     <img data-original="{{ site.github.url }}/images/deface/network/deface-diagram-9.png" width="600" height="600"/>
     <div class="explainer">
-      <h4>
+      <p class="label">
         9. unverified peers are denied a role in storing data
-      </h4>
+      </p>
       <p>
         Additionally, nodes that seek peers to store new data they're sharing with the network will deny any transaction if it appears the receiving node can't provide any recent verification token.
       </p>
     </div>
   </div>
 </div>
+
+<h5>
+  Towards open source
+</h5>
    
 <p>
   The source code for these changes to the <a href="https://github.com/libp2p/js-libp2p-kad-dht" target="_blank">libp2p-kad-dht</a> and <a href="https://github.com/ipfs/interface-datastore" target="_blank">interface-datastore</a> modules is available as a <span style="font-weight:bold;">WIP</span> <a href="https://github.com/iaaaan/js-libp2p-kad-dht" target="_blank">here</a> and <a href="https://github.com/iaaaan/interface-datastore" target="_blank">here</a>. As of version 0.2.0, the changes mentioned are part of forks of those two modules; in the future we will consider including them as part of wrapper modules for the sake of easier maintenance.
