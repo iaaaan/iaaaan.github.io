@@ -100,7 +100,7 @@
           {% endif %}
         </h4>
         <div class="overview_about_meta">
-          {% if page.role %}
+          {% if page.role and page.for %}
             <p class="overview_about_meta_role">
               {{ page.role }} with <a target="_blank" href="{{ page.with-link }}">{{ page.with }}</a>, for <a target="_blank" href="{{ page.for-link }}">{{ page.for }}</a>.
             </p>
@@ -141,7 +141,7 @@
           </div>
         {% endif %}
         <div class="process_posts">
-          {% for post in site.categories[{{page.category}}] %}
+          {% for post in site.categories[{{page.category}}] reversed %}
             {% if post.type == "process" %}
               <div class="process_posts_post" id="{{ post.anchor }}">
                 {% if page.type != "essay" %}
@@ -235,8 +235,10 @@
       var selectors = Array.prototype.slice.call(document.querySelectorAll('.overview_about_section-selector, .process_title_section-selector '))
       selectors.forEach(function (s, i) {
         var link = s.children[0]
+        console.log(link)
         link.addEventListener('click', function(e) {
           var postIndex = link.getAttribute('href')
+          console.log('aga', postIndex)
           e.preventDefault()
           document.querySelector(postIndex).scrollIntoView({ 
             behavior: 'smooth',

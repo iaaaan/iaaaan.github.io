@@ -1,0 +1,75 @@
+---
+title: "The challenges ahead of us"
+date: 2018-10-09 00:00:00 -0500
+categories: deface
+anchor: challenges
+type: process
+---
+
+<p>
+  Today, Deface exists as a working prototype for Google Chrome. There's many tech challenges lying ahead of a public release, including backend architecture, frontend development, and a more thoughtful pass at user experience. 
+</p>
+
+<div class="media l off">
+  <div class="label">
+    Art by <a href="http://deniseyu.io" target="_blank">Denise Yu</a>
+    <br/>
+    <a href="https://drive.google.com/file/d/15nxAaVXZwNFnJNVvgtKonNbzxNgTUCxP/view" target="_blank">Why Are Distributed Systems So Hard?</a>
+  </div>
+  <div class="image border">
+    <a href="https://drive.google.com/file/d/15nxAaVXZwNFnJNVvgtKonNbzxNgTUCxP/view" target="_blank">
+      <img data-original="{{ site.github.url }}/images/deface/challenges/fallacies.png" width="800" height="600"/>
+    </a>
+  </div>
+</div>
+
+<p>
+  Most urgently, I need confirmation that the peer-to-peer backbone of the application is sound. Building distributed computing sytems is notoriously hard and I am not expecting to get it right on the first shot, which is why I hope to connect with peer-to-peer experts and together work out the most secure and scalable architecture possible. Besides the shortcomings of my own code, I am currently concerned about the lack of decentralized signalling for the WebRTC protocol. In other words, Deface nodes currently need to go through WebRTC's handshake process by using a server as middle man, which in some ways defeats the purpose of creating a decentralized application. In a similar fashion, captcha puzzles are currently solved in a centralized way, since user verification tokens have to route through a server before coming back to the client. In fact, I am generally concerned that there's to my knowledge no open source mechanism for user verification out there. This means that Google holds the keys to the castle and could technically backdoor Deface. There's to this day no independent way to do user verification, which in the era we live in reveals very problematic. Finally, testing Deface's peer-to-peer architecture at scale will prove very challenging.
+</p>
+
+<p>
+  There's also a lot of fun to be had with frontend development. The most critical task ahead will be porting Deface's experience to mobile platforms, which is the place where most people consume Facebook content, but also where it's the hardest to break the rules. If Deface remains a desktop browser extension it will simply not work. I have some ideas on how to address this issue but it will require a fully dedicated effort. In addition, we will need to develop a system of script injection robust enough to sustain Facebook's obfuscation of their website's HTML structure, and prevent any potential countermeasure. Once again: if you have some ideas, I would love to hear them.
+</p>
+
+<p>
+  To be successful, Deface needs to provide best-in-class user experience. This doesn't only mean smooth usability from setup to usage, but also teaching people about encryption technology and the tradeoffs involved in security systems. It means providing people with ways to back up if things go wrong, and to not force Deface on those who want to opt out.
+</p>
+
+<div class="media l off">
+  <div class="label">
+    Deface was first presented at <a href="http://www.internetagemedia.com/weekend/" target="_blank">IAM Weekend</a> in Barcelona, where I was honored to share the stage with <a href="http://www.janavirgin.com/" target="_blank">Joana Moll</a> and <a href="https://twitter.com/szymielewicz" target="_blank">Katarzyna Szymielewicz</a>. Video to come soon.
+  </div>
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/deface/challenges/iam.jpg" width="1200" height="800"/>
+  </div>
+</div>
+
+<p>
+  <span style="font-weight:bold;">But of course, all of this will not be enough.</span> Deface raises issues that can only be addressed by rigorous research grounded in fields including law, sociology, and advocacy. These challenges are two-fold: ethics and impact.
+</p>
+
+<p>
+  First, I hope to gather a diverse group of experts and audience members together, in order to discuss some of these issues and start defining a framework for responsible data use. Some questions already stand out in my mind. What are the best ways of telling people what's at stake with their data? How to inform them about the security trade-offs made by Deface's approach to encryption? Does this project obfuscate other types of surveillance like metadata collection? How to mitigate risks the application poses to populations who live in police states? What strategies can be used to prevent crowdforcing? How to anticipate any impact on people with special accessibility needs?
+</p>
+
+<p>
+  Second, we need to strategize and campaign hard to make this project impactful. Except in <a href="https://dataselfie.it/" target="_blank">few instances</a>, browser extensions don't get a lot of traction. Success in this field requires talking to the press, coordinating with tech communities as well as politically active groups, and preparing localized material in order to be clear and audible. We also need to prepare against facebook's possible legal reaction and make the case for data ownership. This means legal counsel should be sought, and possibly planning for strategic litigation. If you have experience with this sort of campaigning, I would love to talk to you.
+</p>
+
+<p>
+  ... And many other things I have not anticipated.
+</p>
+
+<p>
+  When I started this project, I candidly thought I would be done with it in a week's time. Three years later, as I am writing this I become aware of the amount of work ahead of us and wonder whether this might be a little too ambitious. This project will likely not hit all the targets I set for it, but that's fine. I don't consider Deface as the ultimate tech solution to online privacy abuses, nor do I think of it as a one-off advocacy stunt. Deep down this is a research effort, and I truly believe every aspect of it that we get right will pave the way for future projects of <a href="../radiant-city/">digital space appropriation</a>. Deface's principles can be applied to any platform, for any sort of purpose, and I am very excited to see where it takes us. In the meantime though, I want to make sure this first attempt is as thorough and impactful as possible. 
+</p>
+
+<p>
+  This is why I need your help. Many of the challenges listed above can only be tackled by an open and diverse community of contributors. This is why I am in the process of contacting experts in human science and computer science fields. I plan to make the entire codebase open source, organize workshop sessions, and include the perspective of non-technical audiences. 
+</p>
+
+<p>
+  In the short term, I need to meet with lawyers, ethicists, distributed computing experts, mobile platform hackers, and people who have experience with open source project management. In the longer run, we will need privacy advocates, journalists, security experts, designers who can create a brand identity for Deface, and developers who will maintain its cross platform experience. I'm sure there's a lot to be done that I have not even considered, so please be in touch if you have ideas. If you have access to funding, or work spaces in New York, or a fellowship program we should apply to, I would love to hear about them. Finally, <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">spreading the word helps a LOT</a>.
+</p>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
