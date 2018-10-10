@@ -835,9 +835,9 @@ img.button {
 }
 
 li:not(.checklist) {
-  margin-bottom: 25px;
+  margin-bottom: $line-height;
   list-style: decimal-leading-zero;
-  margin-left: 25px;
-  padding-left: 25px;
+  margin-left: $line-width;
+  padding-left: $line-width;
 }
 
