@@ -855,5 +855,14 @@ li:not(.checklist) {
   list-style: decimal;
   margin-left: $line-width;
   padding-left: $line-width;
+
+  @include tablet-portrait-down {
+    margin-left: $line-width* 4;
+  }
+
+  @include laptop-up {
+    margin-left: 18px;
+    padding-left: 18px;
+  }
 }
 
