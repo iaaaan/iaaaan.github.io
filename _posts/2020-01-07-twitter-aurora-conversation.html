@@ -1,0 +1,53 @@
+---
+title: "New tools for conversation discovery"
+date: 2020-01-07 00:00:00 -0500
+categories: twitter-aurora
+anchor: conversation
+type: process
+---
+
+<p>
+  In parallel of my work refreshing community data for the main visualization, I started exploring how the tools at our disposal could help us understand the shape of <a href="https://www.pewresearch.org/fact-tank/2014/02/20/the-six-types-of-twitter-conversations/" target="_blank">conversations on social media</a>. We were especially interested in uncovering how viral content propagates across the platform.
+</p>
+
+<div class="media">
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/conversation/conversation-process.png" width="1100" height="230" alt="Icons summarizing data processes for finding conversation content: tweet collection, conversation tree generation, content curation, and additional data collection."/>
+  </div>
+</div>
+
+<p>
+  To begin this investigation, I started collecting the most viral content that Aurora's backend was catching on a daily basis.  From there, I used Twitter's internal services for building out 'conversation trees' (every reply to a tweet, and their own replies, and so on) from those data points. This was not something easily done with existing APIs, so it took a lot of research on our end in order to get to a satisfying result. Ultimately, by limiting ourselves to 10 degrees of recursion, we were able to catch an average of 99.9% of all conversation trees we looked at (this is due to the large volume of tweets involved in the conversations we were interested in).
+</p>
+
+<div class="media l off">
+  <div class="label">
+    Timelapse of our custom conversation discovery tool in action.
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/conversation/conversation-discovery-tool.gif" width="583" height="564" alt="Capture of the conversation discovery tool in action, where we visualize the shape of many viral conversations"/>
+  </div>
+</div>
+
+<p>
+  In order to make sense out of the sheer volume of data collected, I designed and developed a simple web interface that let us review all conversation trees and sort them based on a number of metrics. Already, this allowed us to better understand the many shapes of Twitter conversations. Eventually, the tool also turned turned out to be helpful for curating future visualization content.
+</p>
+
+<div class="media xl off">
+  <div class="label">
+    Three types of conversation shapes. Sources include a thread, a tweet related to politics, and a tweet from a pop celebrity. Each feature distinct reply patterns.
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/conversation/shapes1.jpg" width="749" height="500" alt="Shape of a threaded conversation: the replies are scattered from one post to the other, looking like a flower bouquet."/>
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/conversation/shapes2.jpg" width="749" height="500" alt="A political conversation, shaped like an explosiion, with very deep conversation branches."/>
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/conversation/shapes3.jpg" width="749" height="500" alt="Shape of a celebrity conversation with their fans: the conversation looks mostly flat."/>
+  </div>
+</div>
+
+<p>
+  While <a href="https://www.pewresearch.org/fact-tank/2014/02/20/the-six-types-of-twitter-conversations/" target="_blank">Pew's study of Twitter's shapes of conversation</a> focused specifically on overall group interactions, our tool helped us identify a wide range of patterns within single conversations. It also helped us explore other dimensions, like volume and time. Quickly, recurring patterns started to emerge and we were able to identify conversation types.
+</p>

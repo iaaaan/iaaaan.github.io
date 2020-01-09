@@ -1,0 +1,75 @@
+---
+title: "Helios, powered by Twitter Aurora"
+date: 2020-01-08 00:00:00 -0500
+categories: twitter-aurora
+anchor: helios
+type: process
+---
+
+<p>
+	The data experiments mentioned above quickly morphed into an entirely new project for the Aurora team. While the regular Aurora experience gave an overview of the Twitter universe and the live events that rocked it, this new visualization, called Helios, would tell the story of single tweets that sparked global conversations. I spearheaded design and development efforts for this project, from prototyping to production.
+</p>
+
+<p>
+	Helios was not born in a vacuum. In fact, the OCR had intended to create something very simiar from the very inception of Aurora, but was not able to pull it off because of the limitations of the data they had access to. Going further back, the concept behind Helios really came from the <a href="https://nytlabs.com/projects/cascade.html" target="_blank">New York Times' Cascade</a> experiment by Jer Thorp, who laid the ground for this visualization work. Helios takes visual clues from these references.
+</p>
+
+<div class="media xl off">
+  <div class="label">
+    From left to right: Jer Thorp's Cascade, Will Lindmeier's work for the OCR, and <a href="https://rarevolume.com/" target="_blank">Rare Volume</a>'s work for Twitter.
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/helios/cascade.jpg" width="480" height="270" alt="visual reference: NY Times Cascade project"/>
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/helios/will.png" width="360" height="270" alt="Visual reference: some earlier work from the OCR"/>
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/helios/rare-volume.png" width="360" height="270" alt="Visual reference: some earlierwork from Rare Volume"/>
+  </div>
+</div>
+
+<p>
+	Helios visualizes the propagation of a conversation across the Twitter platform. To do justice to the complexity involved, it leverages a spatial representation of tweets over time, and focuses the viewer's attention to different scales of events as the animation unfolds. In Helios, tweets are represented by the avatar of their author. Replies to a tweet are linked to their parents. Each node's diameter is mapped to the number of retweets a message has received, and its altitude corresponds to the number of impressions generated. The passing of time is shown by the concentric rings displayed on the ground plane, which indicate the following time marks: a second, a minute, an hour, a day, and a week. Because most of conversations unfold briefly after the first message was posted, we used a non-linear time scale, which helped legibility.
+</p>
+
+<div class="media l">
+	<div class="youtube" style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/383674693?title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+</div>
+
+<p>
+	From a technical point of view, we wanted to make Helios as widely accessible as possible, which is why we opted for building it in WebGL. The voume of data involved (up to 180,000 tweets per conversation) required a lot of optimization work, given the final product would need to run at 8k screen resolution. We opted for using <a href="https://github.com/toxicFork/react-three-renderer" target="_blank">react-three-renderer</a> as a way to bring React's flexibility to Three.js' rendering power.
+</p>
+
+<p>
+	Ultimately, Helios' final release allowed users to navigate through a set of 12 different conversations, that represented a variety of topics and shapes of conversation. It was especially interesting to compare the visual signature of each conversation, as different prompts resulted in radically changing tweet trees.
+</p>
+
+<div class="media xl off">
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/helios/wendys.jpg" width="1000" height="640" alt="Helios visualization of a conversation initiated by Chance the Rapper and Wendy's"/>
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/helios/bts.jpg" width="1000" height="640" alt="Helios visualization of an intense, short-lived conversation initiated by BTS member Jimin"/>
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/helios/starwars.jpg" width="1000" height="640" alt="Helios visualization of a voluminous conversation initiated by Starwars."/>
+  </div>
+</div>
+
+<p>
+	Political conversations often showed intricate patterns, in which polarized arguments generated deep conversation branches. On the contrary, conversations initiated by pop culture celebrities often generated short-lived, intense and unilateral reactions from their fans. Other particular conversation types, like Q&A sessions between celebrities and their audience, created comple landscapes where the original poster appeared in many places throughout the visualization.
+</p>
+
+<div class="media xl off">
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/helios/beijing1.jpg" width="960" height="640" alt="Photograph of Helios exhibited in Beijing"/>
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/helios/beijing2.jpg" width="960" height="640" alt="Photograph of Helios exhibited in Beijing, from another angle"/>
+  </div>
+</div>
+
+<p>
+	Helios was not only exhibited at Twitter's headquarters but was also taken on tour in several countries. In May 2019, it was featured as a starring data experience during Twitter's 2nd annual Brand Summit in Beijing. It was also exhibited in similar marketing events in Tel Aviv, Dubai, and Singapore.
+</p>

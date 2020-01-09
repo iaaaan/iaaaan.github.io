@@ -9,7 +9,7 @@ role: "Creator"
 hasPosts: true
 hasGallery: true
 
-previous-project: specimen-box
+previous-project: twitter-aurora
 next-project: into-the-okavango
 ---
 

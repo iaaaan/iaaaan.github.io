@@ -1,0 +1,114 @@
+---
+title: "Data processes for visualizing interest communities"
+date: 2020-01-05 00:00:00 -0500
+categories: twitter-aurora
+anchor: data20
+type: process
+---
+
+<div class="media l off">
+  <div class="label">
+    Our taxonomy lists 150 interest clusters ranging from news and politics to entertainment, sports and music.
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/data20/clusters.jpg" width="1051" height="538" alt="A big-picture view of all interest communities part of Twitter Aurora's taxonomy"/>
+  </div>
+</div>
+
+
+<p>
+  The initial interest clusters layout was produced in 2016 by the Office for Creative Research, based on the Map of Twitter, a earlier Twitter Hackweek project that made use of the <a href="https://lvdmaaten.github.io/tsne/" target="_blank">tSNE algorithm</a> to visualize the breadth of communities on platform. Of course, this kind of data degrades quickly, as the communities relevant in 2016 had changed a lot over the course of a year. 
+</p>
+
+<p>
+  My first responsibility as I joined the team, was to document, refresh, and streamline all the data processes involved in creating a user layout for Twitter Aurora. This took a lot of research, as knowledge fades quickly within large organizations. I was however able to locate the relevant sources, improve the process, refresh our data set, and map out future efforts toward improved accuracy and automation. Below is a quick summary of the steps involved.
+</p>
+
+<div class="media">
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/data20/data20-process.png" width="1100" height="230" alt="Icons summarizing data processes for Twitter Aurora: data collection, content moderation, layout generation, and manual curation"/>
+  </div>
+</div>
+
+<h3>
+  Data collection: user profiles
+</h3>
+
+<p>
+  The initial step required collecting an updated set of users. In order to create a new layout with a similar number of users visualized, we took into account the amount of profiles that were previously filtered out in order to predict the right number to pull in this time around.
+</p>
+
+<h3>
+  User profile moderation
+</h3>
+<p>
+  Originally done manually by an external vendor, we were able to transfer this process over to Twitter's Trust & Safety team, which was able to filter out accounts deemed not safe for work. The automated approach taken here lacked perfect accuracy in detail, an issue that was mitigated by our information design decisions, and careful review of celebrity accounts.
+</p>
+
+<h3>
+  Social graph reduction
+</h3>
+
+<div class="media l off">
+  <div class="label">
+    Example output from the t-SNE algorithm based on our social graph.
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/data20/tsne.jpg" width="960" height="611" alt="Visual output from the t-SNE algorithm. User profiles group together in clusters"/>
+  </div>
+</div>
+
+<p>
+  In order to compute a user layout that highlighted topics of interest, we made use of the social graph and dimensionality reduction techniques. We sampled a large number of Twitter profiles and looked who of our 250k popular users each of them were following. This provided us with a large sparse matrix that described how our popular users were followed, which we were then able to reduce by using a Singular Value Decomposition algorithm (which was done thanks to Twitter's cluster computing infrastructure), and finally visualize with <a href="https://lvdmaaten.github.io/tsne/" target="_blank">t-SNE</a>.
+</p>
+
+<p>
+  The whole process took a lot of <a href="https://distill.pub/2016/misread-tsne/" target="_blank">fine-tuning</a>. Since then, new algorithms have been released, which might provide better results for future experiments. 
+</p>
+
+<h3>
+  Automated and manual clustering
+</h3>
+
+<div class="media l off">
+  <div class="label">
+    Timelapse of the cluster manual arrangement process, done in our custom web editor.
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/data20/lasso-timelapse.gif" width="960" height="564" alt="timelapse of a web app where we rearrange clusters of users together"/>
+  </div>
+</div>
+
+
+<p>
+  In order to create a more legible experience, and because the t-SNE output doesn't hold significant meaning for nodes that appear far apart from each other, the OCR had decided to rearrange clusters into a manually curated layout. This was done by identifying clusters with DBScan, and then manually arranging the resulting grouping.
+</p>
+
+<p>
+  In an ideal world, the clustering should be done before dimensionality reduction, but for the sake of consistency with our previous layout, we took a similar approach. I however created a new curation tool that enabled us to rearrange clusters efficiently.
+</p>
+
+<p>
+  For cluster labeling, we defined a set of rules and brought in semantic annotations from our user set in order to name communities sensibly. A lot of manual work was involved in order to satisfy all stakeholders involved.
+</p>
+
+<h3>
+  Layout evolution over time
+</h3>
+
+<p>
+   We were able to reproduce this whole process a number of times without compromising the stability of Aurora's general layout. Doing so, it was fascinating to witness the evolution of culture over time on the platform. For instance, over the course of a couple years, we could see the Justin Bieber and the One Direction clusters merge into the general Popular Culture cluster, while new boy bands like EXO and BTS emerged as their own, dominating clusters. Other popular topics like Sneakers and Cryptocurrencies also spawned as full-blown communities. The cluster dedicated to the fans of pop music show The Voice started intersecting with the Country Music cluster. The Kardashian family cluster became its own, small isolated island.
+</p>
+
+<p>
+  Of course, a lot of work would still be required in order to make this process more automated and rigorous. Something we did not get to, would be to compute a series of layouts based on historical data that goes all the way back to the infancy of the platform. This would let us see the organic evolution of Twitter culture over the course of a decade.
+</p>
+
+<div class="media l off">
+  <div class="label">
+    Capture of a layout experiment that ended not being used in production.
+  </div>
+  <div class="image">
+    <img data-original="{{ site.github.url }}/images/twitter-aurora/data20/circular.jpg" width="1658" height="654" alt="A circular layout of interest communities."/>
+  </div>
+</div>
