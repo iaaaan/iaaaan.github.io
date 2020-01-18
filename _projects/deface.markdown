@@ -8,6 +8,7 @@ year: "2015-2018"
 role: "Creator"
 hasPosts: true
 hasGallery: true
+redirect: https://deface.app
 
 previous-project: twitter-aurora
 next-project: into-the-okavango

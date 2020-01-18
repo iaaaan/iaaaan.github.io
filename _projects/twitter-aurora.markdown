@@ -11,7 +11,7 @@ hasGallery: true
 with: "Twitter #Studio"
 
 previous-project: specimen-box
-next-project: deface
+next-project: into-the-okavango
 ---
 
 {% include project-page.html %}

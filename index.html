@@ -78,7 +78,7 @@ layout: default
     </div>
     <div class="projects">
       {% for project in site.projects reversed %}
-        <a href="{{ site.github.url }}/projects/{{project.category}}/">
+        <a href="{% if project.redirect %}https://deface.app{% else %}{{ site.github.url }}/projects/{{project.category}}{% endif %}/" {% if project.redirect %}target="_blank"{% endif %}>
           <div class="projects_project {% if forloop.index > 0 %}inactive{% endif %}" href="{{ site.github.url }}/projects/{{project.category}}/">
             <div class="projects_project_title">
               <h2 class="projects_project_title_name">
@@ -90,6 +90,7 @@ layout: default
             </div>
             <div class="projects_project_subtitle">
               {{ project.subtitle | markdownify | strip_html }}
+              {% if project.redirect %}<br/>(External link to {{project.redirect}}){% endif %}
             </div>
             <div class="projects_project_image">
               <img src="{{ site.github.url }}/images/{{project.category}}/homepage/homepage.jpg"/>
