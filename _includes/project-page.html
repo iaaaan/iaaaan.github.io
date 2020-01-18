@@ -235,15 +235,15 @@
       var selectors = Array.prototype.slice.call(document.querySelectorAll('.overview_about_section-selector, .process_title_section-selector '))
       selectors.forEach(function (s, i) {
         var link = s.children[0]
-        console.log(link)
-        link.addEventListener('click', function(e) {
+
+        link.addEventListener('click', function (e) {
           var postIndex = link.getAttribute('href')
-          console.log('aga', postIndex)
           e.preventDefault()
-          document.querySelector(postIndex).scrollIntoView({ 
+          document.querySelector(postIndex).scrollIntoView({
             behavior: 'smooth',
-            block: 'end'
+            block: 'start'
           })
+
           return false
         })
       })
