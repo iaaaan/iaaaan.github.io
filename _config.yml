@@ -26,7 +26,7 @@ title: Ian Ardouin-Fumat
 email: ian.ardouin@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Ian Ardouin-Fumat's portfolio
-baseurl: "" # the subpath of your site, e.g. /blog
+# baseurl: "" # the subpath of your site, e.g. /blog
 url: "localhost:3000" # the base hostname & protocol for your site
 port: 3000
 
