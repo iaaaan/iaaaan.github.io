@@ -7,11 +7,11 @@ category: into-the-okavango
 date:   "2017-11-02 14:54:00 -0500"
 year: 2014-2017
 with: "the Office for Creative Research"
-with-link: "https://ocr.nyc/"
+with-link: "https://o-c-r.github.io/"
 for: "National Geographic"
 for-link: "http://www.nationalgeographic.com/"
 
-role: "Design Lead and Frontend Dev Lead"
+role: "Lead Design & Lead Frontend Development"
 hasPosts: true
 hasGallery: true
 

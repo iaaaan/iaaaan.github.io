@@ -1,0 +1,46 @@
+---
+title: "Viral trend detection and forecasting"
+date: 2024-11-04 00:00:00 -0500
+categories: trend-genius
+anchor: trend
+type: process
+---
+
+
+<p>
+  In a nutshell, the idea behind Trend Genius was to monitor the Twitter mentions of brand ambassadors, and to automatically launch customized brand campaigns when they started trending. This was a simple solution (the kind that makes you wonder why we were not already doing it) with some interesting twists. Because the Twitter Trends API would not work for our purpose, I quickly opted to create our own data pipeline and trend detection model for Trend Genius. 
+</p>
+
+<p>
+  I started by exploring how Louis Vuitton ambassadors were discussed on the platform. In order to understand the shape of viral moments, I analyzed conversation volume, impressions, and various meta data. For each of those data points, I looked at the distribution of trend lengths, lead times, and baseline variances. This exercise highlighted the need for our prototype to account for various levels of conversation volume (e.g Zendaya generates 10x more conversation than Tyler the Creator) and seasonality (e.g Lebron James trends 10x more often than Zendaya).
+</p>
+
+<div class="media xl off">
+  <div class="label">
+      Preliminary research into viral celebrity moments enabled us to quantify the lag between posts and user impressions. This proved helpful when picking an approach to trend detection.
+  </div>
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/trend-genius/trend/impressions-bradley.png" width="1196" height="740"/>
+  </div>
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/trend-genius/trend/impressions-lebron.png" width="1196" height="740"/>
+  </div>
+</div>
+
+
+<p>
+  As an initial prototype, I built a simple model that relied on a combination of a standard score (Z-score) as a measure of activity intensity, and an exponential weighted moving average (EWMA) as a measure of steady increases in mentions. We ultimately selected this approach because of its simplicity and precision. In comparison, machine learning methods like gradient-boosted trees offered shorter lead times in trend detection, which wasn't as beneficial since I had found that trending messages took an average of two to six hours before they were seen by to the majority of our users.
+</p>
+
+<div class="media l off">
+  <div class="label">
+    We designed a simple UI that provided visual feedback based on selected threshold parameters. Red highlights indicated trending moments detected in the training data.
+  </div>
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/trend-genius/trend/ana.png" width="1241" height="555"/>
+  </div>
+</div>
+
+<p>
+  The UI I prototyped enabled our team to fine-tune activation thresholds based on a trade-off between precision/recall and trend frequency. This enabled brand strategists on our team to update trend rates based on the advertising budgets.
+</p>

@@ -1,0 +1,41 @@
+---
+title: "Another crowdsourced data collection app"
+date: 2021-11-04 00:00:00 -0500
+categories: citizen-browser
+anchor: app
+type: process
+---
+
+
+<p>
+	My contribution to Citizen Browser was modest--many people were involved in the project's success--yet pivotal, as I was in charge of building the desktop application that held all the pieces together. This project felt right up my alley, as I had previously worked on other crowdsourced data collection tools, such as <a href="../floodwatch">Floodwatch</a> or Cloudy with a Chance of Pain.
+</p>
+
+
+<div class="media l off">
+  <div class="label">Screen capture of the Citizen Browser desktop application.</div>
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/citizen-browser/app/app-screenshot.jpg" width="2560" height="1440" alt=""/>
+  </div>
+</div>
+
+
+<p>
+	I built Citizen Browser as an Electron/React application for both Windows and MacOS. It presented interesting design and development challenges, since the app's user flow was so unique.
+</p>
+
+
+<p>
+	In particular, a crucial stage of the onboarding flow required sending new participants to the Facebook website and having them sign in to their account. While this seemed trivial at first glance, it turned out that requesting users to sign into their personal accounts from an unfamiliar app can throw many users off, and especially those who are not as tech-savvy. Designer Sam Morris and I carefully addressed this issue by testing and updating the user flow, until we were confident participants would not drop out of the study.
+</p>
+
+<p>
+	Once set up, I built the application to remain resilient to connection and authentication issues, and built in user feedback where necessary. I aimed to create an experience as unobstrusive as possible, aiming for Citizen Browser to operate 24/7 and quietly as to not introduce any biases in data collection. I created a pipeline that sanitized the resulting data archives and guaranteed user privacy. The data was immediately processed to remove information that could identify panelists and their friends, including account names, usernames, the names of social media connections and contacts, profile pictures, and friend requests.
+</p>
+
+<div class="media l off">
+  <div class="label">Screenshot of a redacted Facebook homepage. The redacted information, of which there was a lot, is replaced by pink blocks in the screenshot and deleted from the html source code without any human intervention.</div>
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/citizen-browser/app/redaction.jpg" width="2560" height="1440" alt=""/>
+  </div>
+</div>

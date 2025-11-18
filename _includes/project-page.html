@@ -102,7 +102,11 @@
         <div class="overview_about_meta">
           {% if page.role and page.for %}
             <p class="overview_about_meta_role">
-              {{ page.role }} with <a target="_blank" href="{{ page.with-link }}">{{ page.with }}</a>, for <a target="_blank" href="{{ page.for-link }}">{{ page.for }}</a>.
+              {% if page.with %}
+                {{ page.role }} with <a target="_blank" href="{{ page.with-link }}">{{ page.with }}</a>, for <a target="_blank" href="{{ page.for-link }}">{{ page.for }}</a>.
+              {% else %}
+                {{ page.role }}, for <a target="_blank" href="{{ page.for-link }}">{{ page.for }}</a>.
+              {% endif %}
             </p>
           {% endif %}
           {% if page.press %} 

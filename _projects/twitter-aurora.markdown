@@ -5,12 +5,15 @@ description: "I joined the project in 2017 in order to consolidate its data proc
 category: twitter-aurora
 date:   "2020-01-04 09:54:00 -0500"
 year: "2019"
-role: "Data Scientist & Information Designer"
 hasPosts: true
 hasGallery: true
-with: "Twitter #Studio"
 
-previous-project: specimen-box
+role: "Lead Data Science & Information Design"
+
+
+for: "Twitter #Studio"
+
+previous-project: citizen-browser
 next-project: into-the-okavango
 ---
 

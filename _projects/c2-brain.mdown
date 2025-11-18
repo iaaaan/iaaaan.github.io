@@ -14,7 +14,7 @@ hasPosts: true
 hasGallery: true
 
 previous-project: into-the-okavango
-next-project: talks
+next-project: elephant-atlas
 ---
 
 {% include project-page.html %}

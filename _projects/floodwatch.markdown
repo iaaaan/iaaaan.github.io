@@ -9,13 +9,13 @@ year: 2014-2016
 for: "Ford Foundation"
 for-link: "https://www.fordfoundation.org/"
 with: "The OCR"
-with-link: "https://ocr.nyc/"
+with-link: "https://o-c-r.github.io/"
 
 role: "Design Lead and Frontend Dev Lead"
 hasPosts: true
 hasGallery: true
 
-previous-project: radiant-city
+previous-project: elephant-atlas
 next-project: specimen-box
 press: <a target='_blank' href='https://www.washingtonpost.com/news/the-switch/wp/2014/10/15/turning-the-tables-on-online-advertisers-2'>Washington Post</a>, <a target='_blank' href='http://gizmodo.com/who-does-your-browser-history-say-you-are-1643372616'>Gizmodo</a>, <a target='_blank' href='https://www.fastcodesign.com/3036860/infographic-of-the-day/a-tool-to-track-the-advertisers-tracking-you'>Fast Company</a>, <a target='_blank' href='http://www.businessinsider.com/floodwatch-ad-tracking-chrome-extension-2014-10'>Business Insider</a>, <a target='_blank' href='https://flowingdata.com/2014/10/08/tracking-the-ad-industry/'>Flowing Data</a>
 ---

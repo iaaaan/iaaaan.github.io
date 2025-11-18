@@ -1,0 +1,43 @@
+---
+title: "Citizen Browser study protocol"
+date: 2021-11-03 00:00:00 -0500
+categories: citizen-browser
+anchor: study
+type: process
+---
+
+<p>
+  The study began by recruiting a panel of 1,000 people representative of the US adult population across gender, age, race, education, and location. The panel was assembled by a survey research provider, and was constantly updated as the study ran its course. As they signed up, participants were required to take a short demographic survey, which would later on be used to provide additional context to the content captured by Citizen Browser.
+</p>
+
+<div class="media xl off">
+  <!-- <div class="label">The Markup published a full <a href="https://themarkup.org/citizen-browser/2021/01/05/how-we-built-a-facebook-inspector" target="_blank">technical documentation</a> of Citizen Browser.</div> -->
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/citizen-browser/study/panel.png" width="2023" height="911" alt=""/>
+  </div>
+</div>
+
+
+
+<p>
+  Upon downloading the desktop application I developed, participants would go through an onboarding flow. This step required them to sign in to Facebook in a browser that was controlled by the application. Once successfully signed in, participants did not need to interact with the app anymore, as it would automatically load Facebook behind the scenes and collect the content served by the platform. The data capture was performed by NGFetch, a proprietary browser automation tool developed by Netograph.
+</p>
+
+<p>
+  The app collected HTML source code and screenshots from Facebook. This included the Facebook homepage, suggested groups, and recommended pages. We focused only on items promoted through shared links on these pages. This included advertisements, public posts, publicly shared video links (not the videos themselves), shared links and reaction counts (no text or usernames are captured), suggested groups, and suggested pages. Captured data points were sent to a database maintained by The Markup, and annotated with participant demographic information. 
+</p>
+
+<div class="media l off">
+  <div class="label">Example of content captured by Citizen Browser</div>
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/citizen-browser/study/example-capture.jpg" width="2560" height="1440" alt=""/>
+  </div>
+</div>
+
+<p>
+  The privacy of the study's participants was of course a major consideration, and Citizen Browser was designed to redact any identifiable information from the data capture. Furthermore, any data analysis was ultimately performed over aggregates, as to not reveal the identity of participants.
+</p>
+
+<p>
+  The study ran its course over a two year period. It produced a trove of data that enabled journalists at The Markup to analyze what content was prioritized by Facebook, and how different categories of the US population were impacted by algorithmic disparities.
+</p>

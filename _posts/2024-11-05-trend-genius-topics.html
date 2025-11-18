@@ -1,0 +1,32 @@
+---
+title: '"But what if an ambassador trends because they k*lled someone?"'
+date: 2024-11-05 00:00:00 -0500
+categories: trend-genius
+anchor: topics
+type: process
+---
+
+<p style="font-style:italic">
+    ^ This was an actual question asked during a client meeting. Thankfully we were prepared for it.
+</p>
+
+<p>
+  The real-time nature of trend detection posed a serious challenge to brand safety. Namely, how could one prevent the launch of ad campaigns when the associated celebrities trended for the wrong reasons? We tackled this issue from two angles, both preventative and real-time. To do this, I designed a process that identified predominant topics discussed in mentions of our brand ambassadors.
+</p>
+
+<div class="media l off">
+  <div class="label">
+    Most engaged topics in the Zendaya conversation in 2025. Circles represent tweets, clustered/colored by topic, and sized by engagement. See methodology below.
+  </div>
+  <div class="image border">
+    <img data-original="{{ site.github.url }}/images/trend-genius/topics/zendaya.png" width="1636" height="1626"/>
+  </div>
+</div>
+
+<p>
+  This analysis relied on manifold learning. I had been using this method since my <a href="../twitter-aurora">Twitter Aurora</a> days, except this time, the data input wasn't based on follower graph, but on tweet content annotated by a large language model (LLM). By prompting a LLM, we were able to obtain embedding coordinates for any given tweet, and eventually construct a n-dimensional space that described an entire conversation. In order to visualize the n-dimension output, we applied a manifold learning algorithm (t-SNE), which turned it to two dimensions. Finally, a clustering algorithm (HDBSCAN) and some additional LLM annotations enabled us to identify clusters in the resulting landscape of tweets. At the end of this process, we had effectively generated a visual map of a given conversation, where tweets similar in meaning appeared close to each other. Applying this analysis to the top 1,000 most engaged mentions of a celebrity on Twitter, we were able to quickly identify how that person was being discussed over any given period of time.
+</p>
+
+<p>
+  This topic analysis was useful in two different ways in the context of Trend Genius. First, we used it during preliminary research as a way to identify potential issues associated with Louis Vuiton ambassadors, and build a stoplist of keywords that would prevent Trend Genius from activating when those came up. Second, the analysis could be used in real time by the client as way to assess how brand safe a given trend was during activation.
+</p>

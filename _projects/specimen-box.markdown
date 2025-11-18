@@ -9,14 +9,14 @@ year: 2014
 for: "Microsoft Cybercrime Unit"
 for-link: "https://news.microsoft.com/presskits/dcu/#sm.00000b7w8fnigif79rsp9bqb4m5p1"
 with: "The OCR"
-with-link: "https://ocr.nyc/"
+with-link: "https://o-c-r.github.io/"
 
 role: "Design Lead and Processing Dev Lead"
 hasPosts: true
 hasGallery: true
 
 previous-project: floodwatch
-next-project: twitter-aurora
+next-project: trend-genius
 press: <a target='_blank' href='https://www.wired.com/2014/12/sci-fi-worthy-interface-tracking-criminal-botnets/'>Wired</a>
 ---
 
