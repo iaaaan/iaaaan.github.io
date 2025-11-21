@@ -145,76 +145,76 @@ layout: default
 
   <script>
 
-    // var scene, camera, renderer
-    // var geometry, material, geometry, particles
-    // scene = new THREE.Scene()
-    // camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 25, 10000 )
-    // camera.position.z = 800
-    // geometry = new THREE.Geometry()
-    // for ( i = 0; i < 12000; i ++ ) {
-    //   var vertex = new THREE.Vector3()
-    //   vertex.x = Math.random() * 2000 - 1000
-    //   vertex.y = Math.random() * 2000 - 1000
-    //   vertex.z = Math.random() * 2000 - 1000
-    //   geometry.vertices.push(vertex)
-    // }
-    // material = new THREE.PointsMaterial({ color: 0x555555 })
-    // particles = new THREE.Points(geometry, material)
-    // scene.add(particles)
-    // renderer = new THREE.WebGLRenderer({antialias: true})
-    // renderer.setSize( window.innerWidth, window.innerHeight )
-    // document.querySelector('#background').appendChild( renderer.domElement )
-    // renderer.render( scene, camera )
+    var scene, camera, renderer
+    var geometry, material, geometry, particles
+    scene = new THREE.Scene()
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 25, 10000 )
+    camera.position.z = 800
+    geometry = new THREE.Geometry()
+    for ( i = 0; i < 12000; i ++ ) {
+      var vertex = new THREE.Vector3()
+      vertex.x = Math.random() * 2000 - 1000
+      vertex.y = Math.random() * 2000 - 1000
+      vertex.z = Math.random() * 2000 - 1000
+      geometry.vertices.push(vertex)
+    }
+    material = new THREE.PointsMaterial({ color: 0x555555 })
+    particles = new THREE.Points(geometry, material)
+    scene.add(particles)
+    renderer = new THREE.WebGLRenderer({antialias: true})
+    renderer.setSize( window.innerWidth, window.innerHeight )
+    document.querySelector('#background').appendChild( renderer.domElement )
+    renderer.render( scene, camera )
 
     var activeProjectID = 0
     var projectCount = {{ site.projects | size | jsonify }}
 
     document.addEventListener("DOMContentLoaded", updateActiveProject)
     document.addEventListener('scroll', function(e) {
-      // animateBackground(e.deltaY)
+      animateBackground(e.deltaY)
       updateActiveProject(e)
     })
     document.addEventListener('mousemove', updateActiveProject)
     
     window.addEventListener('resize', function () {
-      // camera.aspect = window.innerWidth / window.innerHeight
-      // camera.updateProjectionMatrix()
-      // renderer.setSize( window.innerWidth, window.innerHeight )
-      // renderer.render( scene, camera )
+      camera.aspect = window.innerWidth / window.innerHeight
+      camera.updateProjectionMatrix()
+      renderer.setSize( window.innerWidth, window.innerHeight )
+      renderer.render( scene, camera )
       updateActiveProject()
     })
 
-    // var lastY = 0
-    // document.addEventListener('touchstart', function (e){
-    //  var currentY = e.touches[0].clientY
-    //  lastY = currentY
-    // })
+    var lastY = 0
+    document.addEventListener('touchstart', function (e){
+     var currentY = e.touches[0].clientY
+     lastY = currentY
+    })
 
-    // document.addEventListener('touchmove', function (e){
-    //   var currentY = e.touches[0].clientY
-    //   var delta = currentY - lastY
-    //   animateBackground(-delta)
-    //   lastY = currentY
-    // })
+    document.addEventListener('touchmove', function (e){
+      var currentY = e.touches[0].clientY
+      var delta = currentY - lastY
+      animateBackground(-delta)
+      lastY = currentY
+    })
 
-    // document.addEventListener('touchend', function (e){
-    //  lastY = 0
-    // })
+    document.addEventListener('touchend', function (e){
+     lastY = 0
+    })
 
     var lastScrollTop = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0)
-    // function animateBackground () {
-    //   var doc = document.documentElement
-    //   var scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
-    //   var delta = scrollTop - lastScrollTop
-    //   if (
-    //     (delta < 0 && scrollTop > 0) || 
-    //     (delta > 0 && scrollTop + window.innerHeight < document.body.clientHeight)
-    //   ) {
-    //     particles.rotation.x -= delta / 3000
-    //     renderer.render( scene, camera )
-    //   }
-    //   lastScrollTop = scrollTop
-    // }
+    function animateBackground () {
+      var doc = document.documentElement
+      var scrollTop = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0)
+      var delta = scrollTop - lastScrollTop
+      if (
+        (delta < 0 && scrollTop > 0) || 
+        (delta > 0 && scrollTop + window.innerHeight < document.body.clientHeight)
+      ) {
+        particles.rotation.x -= delta / 3000
+        renderer.render( scene, camera )
+      }
+      lastScrollTop = scrollTop
+    }
 
     function updateActiveProject (event) {
       var pageHeight = document.body.offsetHeight
