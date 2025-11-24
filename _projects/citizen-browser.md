@@ -12,7 +12,7 @@ role: "Frontend Development"
 for: "The Markup"
 for-link: "https://themarkup.org"
 
-previous-project: trend-genius
+previous-project: human-rights-campaign
 next-project: twitter-aurora
 
 press: <a target='_blank' href='https://themarkup.org/series/citizen-browser'>The Markup</a>
